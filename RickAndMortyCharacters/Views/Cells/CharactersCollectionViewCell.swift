@@ -69,11 +69,11 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Configuration
     
-    public func configure(with character: PreviewCharacter) {
+    public func configure(with character: CharacterData) {
         if let image = character.image {
             imageView.image = image
         } else {
-            imageView.image =  UIImage(systemName: "person.crop.circle.badge.questionmark.fill")
+            imageView.image = UIImage(systemName: "person.crop.circle.badge.questionmark.fill")
         }
         nameLabel.text = character.name
         statusAndSpeciesLabel.attributedText = createColoredString(

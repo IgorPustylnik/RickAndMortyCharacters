@@ -20,7 +20,7 @@ class MainPresenter {
 
 extension MainPresenter: MainOutputDelegate {
     func refreshCharactersList() {
-        inputDelegate?.setCharacters(storage.charactersPreview)
+        inputDelegate?.setCharacters(storage.charactersList)
     }
     
     func loadMoreCharacters() {

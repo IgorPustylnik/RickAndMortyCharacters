@@ -8,11 +8,11 @@
 import UIKit
 
 protocol CharactersCollectionViewDelegate: AnyObject {
-    
+    func showCharacter(_ character: CharacterData)
 }
 
 class CharactersCollectionView: UICollectionView {
-    private var characters: [PreviewCharacter]?
+    private var characters: [CharacterData]?
     weak private var ccvDelegate: CharactersCollectionViewDelegate?
     
     init(ccvDelegate: CharactersCollectionViewDelegate) {
@@ -34,7 +34,7 @@ class CharactersCollectionView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setCharacters(_ characters: [PreviewCharacter]) {
+    public func setCharacters(_ characters: [CharacterData]) {
         self.characters = characters
         reloadData()
     }
@@ -57,18 +57,15 @@ extension CharactersCollectionView: UICollectionViewDataSource {
         return cell
     }
     
-    
 }
 
 extension CharactersCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         deselectItem(at: indexPath, animated: true)
-//        previewCharacters?[indexPath.row].clicked { vc in
-//            self.ccvDelegate?.showVC(vc)
-//        }
+        guard let character = characters?[indexPath.row] else { return }
+        self.ccvDelegate?.showCharacter(character)
     }
 }
-
 
 extension CharactersCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainInputDelegate: AnyObject {
-    func setCharacters(_ characters: [PreviewCharacter])
+    func setCharacters(_ characters: [CharacterData])
 }
 
 protocol MainOutputDelegate: AnyObject {
@@ -37,6 +37,7 @@ class MainVC: UIViewController {
         view.backgroundColor = .Colors.background
         
         navigationItem.title = "Rick & Morty Characters"
+        navigationItem.backButtonTitle = ""
         
         charactersCollectionView.contentInset.top = 15
         
@@ -53,12 +54,17 @@ class MainVC: UIViewController {
 }
 
 extension MainVC: MainInputDelegate {
-    func setCharacters(_ characters: [PreviewCharacter]) {
+    func setCharacters(_ characters: [CharacterData]) {
         charactersCollectionView.setCharacters(characters)
     }
     
 }
 
 extension MainVC: CharactersCollectionViewDelegate {
+    func showCharacter(_ character: CharacterData) {
+        let detailedInfoVC = DetailedInfoVC()
+        detailedInfoVC.setCharacter(character)
+        navigationController?.pushViewController(detailedInfoVC, animated: true)
+    }
     
 }

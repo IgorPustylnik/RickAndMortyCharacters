@@ -21,22 +21,13 @@ enum Gender: String {
 }
 
 
-struct PreviewCharacter {
+struct CharacterData {
     let id: Int
     let image: UIImage?
     let name: String
     let status: Status
     let species: String
     let gender: Gender
-}
-
-struct CharacterDetails {
-    let id: Int
-    let image: UIImage?
-    let name: String
-    let status: Status
-    let species: String
-    let episodes: String // TODO: - come up with something different
+    let episodes: [String] // TODO: - come up with something different
     let location: String
-    let gender: Gender
 }
