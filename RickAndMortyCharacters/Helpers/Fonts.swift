@@ -11,7 +11,7 @@ extension UIFont {
     private enum IBMPlexSansTypes {
         static let regular = "IBMPlexSans-Regular"
         static let medium = "IBMPlexSans-Medium"
-        static let semiBold = "IBMPlexSans-SemiBold.ttf"
+        static let semiBold = "IBMPlexSans-SemiBold"
         static let bold = "IBMPlexSans-Bold"
     }
     
