@@ -17,4 +17,15 @@ extension UIViewController {
     private func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    func setupCustomBackButton() {
+        let backButtonImage = UIImage(systemName: "chevron.left")?.withTintColor(.Colors.mainText, renderingMode: .alwaysOriginal)
+        let backButton = UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(pressedBackButton))
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc
+    private func pressedBackButton() {
+        navigationController?.popViewController(animated: true)
+    }
 }
