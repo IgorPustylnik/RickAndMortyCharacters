@@ -6,3 +6,25 @@
 //
 
 import Foundation
+
+class MainPresenter {
+    
+    private let storage = DataStorage.shared
+    
+    weak private var inputDelegate: MainInputDelegate?
+    
+    func setInputDelegate(mainInputDelegate: MainInputDelegate) {
+        self.inputDelegate = mainInputDelegate
+    }
+}
+
+extension MainPresenter: MainOutputDelegate {
+    func refreshCharactersList() {
+        inputDelegate?.setCharacters(storage.charactersPreview)
+    }
+    
+    func loadMoreCharacters() {
+        // TODO: - Network call
+    }
+    
+}

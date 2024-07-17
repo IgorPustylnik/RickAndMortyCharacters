@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5525ACC52C481315005ACA0C /* DetailedInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACC42C481315005ACA0C /* DetailedInfoVC.swift */; };
+		5525ACC72C481337005ACA0C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACC62C481337005ACA0C /* InfoView.swift */; };
 		55B5AB342C47C4BE00250304 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB332C47C4BE00250304 /* AppDelegate.swift */; };
 		55B5AB362C47C4BE00250304 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB352C47C4BE00250304 /* SceneDelegate.swift */; };
 		55B5AB382C47C4BE00250304 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB372C47C4BE00250304 /* MainVC.swift */; };
@@ -17,9 +19,19 @@
 		55B5AB542C47C9DC00250304 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB532C47C9DC00250304 /* MainPresenter.swift */; };
 		55B5AB5B2C47CCAE00250304 /* UIViewController + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB5A2C47CCAE00250304 /* UIViewController + ext.swift */; };
 		55B5AB632C47CF5500250304 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB622C47CF5500250304 /* Fonts.swift */; };
+		55B5AB692C47E03C00250304 /* CharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB682C47E03C00250304 /* CharactersCollectionViewCell.swift */; };
+		55B5AB6C2C47E09500250304 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB6B2C47E09500250304 /* NavigationController.swift */; };
+		55B5AB6F2C47E6D800250304 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB6E2C47E6D800250304 /* Character.swift */; };
+		55B5AB712C47F55A00250304 /* CharactersCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB702C47F55A00250304 /* CharactersCollectionView.swift */; };
+		55B5AB732C48062900250304 /* IBMPlexSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55B5AB6D2C47E3EB00250304 /* IBMPlexSans-SemiBold.ttf */; };
+		55B5AB742C48062B00250304 /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55B5AB5F2C47CDDB00250304 /* IBMPlexSans-Bold.ttf */; };
+		55B5AB752C48062D00250304 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55B5AB602C47CDDB00250304 /* IBMPlexSans-Medium.ttf */; };
+		55B5AB762C48062F00250304 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55B5AB5E2C47CDDB00250304 /* IBMPlexSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5525ACC42C481315005ACA0C /* DetailedInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoVC.swift; sourceTree = "<group>"; };
+		5525ACC62C481337005ACA0C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		55B5AB302C47C4BE00250304 /* RickAndMortyCharacters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyCharacters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B5AB332C47C4BE00250304 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B5AB352C47C4BE00250304 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +47,11 @@
 		55B5AB5F2C47CDDB00250304 /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; };
 		55B5AB602C47CDDB00250304 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
 		55B5AB622C47CF5500250304 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		55B5AB682C47E03C00250304 /* CharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCollectionViewCell.swift; sourceTree = "<group>"; };
+		55B5AB6B2C47E09500250304 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		55B5AB6D2C47E3EB00250304 /* IBMPlexSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		55B5AB6E2C47E6D800250304 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		55B5AB702C47F55A00250304 /* CharactersCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5525ACC32C4812B4005ACA0C /* Detailed Info */ = {
+			isa = PBXGroup;
+			children = (
+				5525ACC42C481315005ACA0C /* DetailedInfoVC.swift */,
+				5525ACC62C481337005ACA0C /* InfoView.swift */,
+			);
+			path = "Detailed Info";
+			sourceTree = "<group>";
+		};
 		55B5AB272C47C4BE00250304 = {
 			isa = PBXGroup;
 			children = (
@@ -69,7 +95,7 @@
 			children = (
 				55B5AB592C47CC7300250304 /* Extensions */,
 				55B5AB472C47C5BB00250304 /* Services */,
-				55B5AB4E2C47C88000250304 /* Models */,
+				55B5AB652C47DFBF00250304 /* Models */,
 				55B5AB4F2C47C98700250304 /* Presenters */,
 				55B5AB502C47C99300250304 /* Views */,
 				55B5AB4C2C47C60900250304 /* App */,
@@ -108,13 +134,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		55B5AB4E2C47C88000250304 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		55B5AB4F2C47C98700250304 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,8 +145,10 @@
 		55B5AB502C47C99300250304 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				55B5AB6A2C47E07A00250304 /* Navigation */,
 				55B5AB572C47C9F800250304 /* Main */,
-				55B5AB582C47CA0400250304 /* Cells */,
+				5525ACC32C4812B4005ACA0C /* Detailed Info */,
+				55B5AB642C47DF9E00250304 /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -136,15 +157,9 @@
 			isa = PBXGroup;
 			children = (
 				55B5AB372C47C4BE00250304 /* MainVC.swift */,
+				55B5AB702C47F55A00250304 /* CharactersCollectionView.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		55B5AB582C47CA0400250304 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		55B5AB592C47CC7300250304 /* Extensions */ = {
@@ -158,6 +173,7 @@
 		55B5AB5D2C47CDD100250304 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				55B5AB6D2C47E3EB00250304 /* IBMPlexSans-SemiBold.ttf */,
 				55B5AB5F2C47CDDB00250304 /* IBMPlexSans-Bold.ttf */,
 				55B5AB602C47CDDB00250304 /* IBMPlexSans-Medium.ttf */,
 				55B5AB5E2C47CDDB00250304 /* IBMPlexSans-Regular.ttf */,
@@ -171,6 +187,30 @@
 				55B5AB622C47CF5500250304 /* Fonts.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		55B5AB642C47DF9E00250304 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				55B5AB682C47E03C00250304 /* CharactersCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		55B5AB652C47DFBF00250304 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				55B5AB6E2C47E6D800250304 /* Character.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		55B5AB6A2C47E07A00250304 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				55B5AB6B2C47E09500250304 /* NavigationController.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +271,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55B5AB742C48062B00250304 /* IBMPlexSans-Bold.ttf in Resources */,
 				55B5AB3D2C47C4C200250304 /* Assets.xcassets in Resources */,
+				55B5AB732C48062900250304 /* IBMPlexSans-SemiBold.ttf in Resources */,
 				55B5AB402C47C4C200250304 /* Base in Resources */,
+				55B5AB762C48062F00250304 /* IBMPlexSans-Regular.ttf in Resources */,
+				55B5AB752C48062D00250304 /* IBMPlexSans-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,9 +287,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5525ACC52C481315005ACA0C /* DetailedInfoVC.swift in Sources */,
+				55B5AB6C2C47E09500250304 /* NavigationController.swift in Sources */,
 				55B5AB632C47CF5500250304 /* Fonts.swift in Sources */,
 				55B5AB382C47C4BE00250304 /* MainVC.swift in Sources */,
+				55B5AB6F2C47E6D800250304 /* Character.swift in Sources */,
 				55B5AB542C47C9DC00250304 /* MainPresenter.swift in Sources */,
+				5525ACC72C481337005ACA0C /* InfoView.swift in Sources */,
+				55B5AB712C47F55A00250304 /* CharactersCollectionView.swift in Sources */,
+				55B5AB692C47E03C00250304 /* CharactersCollectionViewCell.swift in Sources */,
 				55B5AB5B2C47CCAE00250304 /* UIViewController + ext.swift in Sources */,
 				55B5AB342C47C4BE00250304 /* AppDelegate.swift in Sources */,
 				55B5AB4B2C47C5F300250304 /* NetworkManager.swift in Sources */,
