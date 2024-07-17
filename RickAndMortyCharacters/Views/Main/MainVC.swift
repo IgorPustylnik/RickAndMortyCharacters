@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .Colors.aqua
         // Do any additional setup after loading the view.
     }
-
 
 }
 
