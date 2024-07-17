@@ -65,13 +65,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5525ACC32C4812B4005ACA0C /* Detailed Info */ = {
+		5525ACC32C4812B4005ACA0C /* DetailedInfo */ = {
 			isa = PBXGroup;
 			children = (
 				5525ACC42C481315005ACA0C /* DetailedInfoVC.swift */,
 				5525ACC62C481337005ACA0C /* InfoView.swift */,
 			);
-			path = "Detailed Info";
+			path = DetailedInfo;
 			sourceTree = "<group>";
 		};
 		55B5AB272C47C4BE00250304 = {
@@ -147,7 +147,7 @@
 			children = (
 				55B5AB6A2C47E07A00250304 /* Navigation */,
 				55B5AB572C47C9F800250304 /* Main */,
-				5525ACC32C4812B4005ACA0C /* Detailed Info */,
+				5525ACC32C4812B4005ACA0C /* DetailedInfo */,
 				55B5AB642C47DF9E00250304 /* Cells */,
 			);
 			path = Views;
