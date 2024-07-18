@@ -18,6 +18,7 @@
 		5525ACDC2C497EDF005ACA0C /* PlainImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACDB2C497EDF005ACA0C /* PlainImageButton.swift */; };
 		5525ACDF2C498350005ACA0C /* FilterOverviewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACDE2C498350005ACA0C /* FilterOverviewButton.swift */; };
 		5525ACE12C4989D5005ACA0C /* FilterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACE02C4989D5005ACA0C /* FilterPresenter.swift */; };
+		5525ACE92C499EBC005ACA0C /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACE82C499EBC005ACA0C /* SearchTextField.swift */; };
 		55B5AB342C47C4BE00250304 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB332C47C4BE00250304 /* AppDelegate.swift */; };
 		55B5AB362C47C4BE00250304 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB352C47C4BE00250304 /* SceneDelegate.swift */; };
 		55B5AB382C47C4BE00250304 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB372C47C4BE00250304 /* MainVC.swift */; };
@@ -50,6 +51,7 @@
 		5525ACDB2C497EDF005ACA0C /* PlainImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainImageButton.swift; sourceTree = "<group>"; };
 		5525ACDE2C498350005ACA0C /* FilterOverviewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOverviewButton.swift; sourceTree = "<group>"; };
 		5525ACE02C4989D5005ACA0C /* FilterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPresenter.swift; sourceTree = "<group>"; };
+		5525ACE82C499EBC005ACA0C /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		55B5AB302C47C4BE00250304 /* RickAndMortyCharacters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyCharacters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B5AB332C47C4BE00250304 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B5AB352C47C4BE00250304 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		5525ACE22C499B5B005ACA0C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5525ACEA2C49AA8A005ACA0C /* Main */,
 				5525ACE52C499BB4005ACA0C /* DetailedInfo */,
 				5525ACE32C499B7B005ACA0C /* Filter */,
 				5525ACE42C499B8C005ACA0C /* Collections */,
@@ -123,7 +126,6 @@
 		5525ACE32C499B7B005ACA0C /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				5525ACCF2C48FD01005ACA0C /* FilterSearchView.swift */,
 				5525ACCD2C48FCD5005ACA0C /* FilterBottomView.swift */,
 			);
 			path = Filter;
@@ -149,8 +151,17 @@
 		5525ACE62C499BE9005ACA0C /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
+				5525ACE82C499EBC005ACA0C /* SearchTextField.swift */,
 			);
 			path = TextFields;
+			sourceTree = "<group>";
+		};
+		5525ACEA2C49AA8A005ACA0C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5525ACCF2C48FD01005ACA0C /* FilterSearchView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		55B5AB272C47C4BE00250304 = {
@@ -393,6 +404,7 @@
 				5525ACD02C48FD01005ACA0C /* FilterSearchView.swift in Sources */,
 				5525ACDF2C498350005ACA0C /* FilterOverviewButton.swift in Sources */,
 				55B5AB492C47C5CD00250304 /* DataStorage.swift in Sources */,
+				5525ACE92C499EBC005ACA0C /* SearchTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

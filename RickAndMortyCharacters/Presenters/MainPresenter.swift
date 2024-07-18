@@ -12,10 +12,20 @@ class MainPresenter {
     private let storage = DataStorage.shared
     private let filterModel = FilterModel.shared
     
+    init() {
+        filterModel.addObserver(self)
+    }
+    
     weak private var inputDelegate: MainInputDelegate?
     
     func setInputDelegate(mainInputDelegate: MainInputDelegate) {
         self.inputDelegate = mainInputDelegate
+    }
+}
+
+extension MainPresenter: FilterObserver {
+    func filterDidUpdate(_ filter: Filter) {
+        inputDelegate?.refreshFiltersView(with: filter)
     }
 }
 
@@ -30,6 +40,10 @@ extension MainPresenter: MainOutputDelegate {
     
     func getFilterState() -> Filter {
         filterModel.filter
+    }
+    
+    func setSearchQuery(_ query: String) {
+        filterModel.searchQuery = query
     }
     
     func loadMoreCharacters() {

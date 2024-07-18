@@ -15,6 +15,7 @@ protocol MainInputDelegate: AnyObject {
 protocol MainOutputDelegate: AnyObject {
     func resetFilterState()
     func refreshCharactersList()
+    func setSearchQuery(_ query: String)
     func loadMoreCharacters()
 }
 
@@ -23,6 +24,7 @@ class MainVC: UIViewController {
     private let presenter = MainPresenter()
     weak private var outputDelegate: MainOutputDelegate?
     
+    private lazy var filterSearchView = FilterSearchView(delegate: self)
     private lazy var charactersCollectionView = CharactersCollectionView(ccvDelegate: self)
     private var tapBottomSheetHider: UITapGestureRecognizer?
 
@@ -34,6 +36,7 @@ class MainVC: UIViewController {
         outputDelegate?.refreshCharactersList()
         
         addHidingSheetGestureRecognizer()
+//        addHidingKeyboardGesture()
         
         setupLayout()
     }
@@ -44,21 +47,16 @@ class MainVC: UIViewController {
         navigationItem.title = "Rick & Morty Characters"
         navigationItem.backButtonTitle = ""
         
-        charactersCollectionView.contentInset.top = 15
-        
         view.addSubview(charactersCollectionView)
-        
-        // FIXME: - TESTING AREA
-        let button = FilterToggleButton(title: "Test", isOn: false)
-        button.addTarget(self, action: #selector(showFiltersSheet), for: .touchUpInside)
-        view.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(filterSearchView)
         
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            filterSearchView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            filterSearchView.heightAnchor.constraint(equalToConstant: 72),
+            filterSearchView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            filterSearchView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            charactersCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            charactersCollectionView.topAnchor.constraint(equalTo: filterSearchView.bottomAnchor, constant: 24),
             charactersCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             charactersCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             charactersCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
@@ -109,8 +107,24 @@ extension MainVC: MainInputDelegate {
     }
     
     func refreshFiltersView(with filter: Filter) {
-        // TODO: -
+        filterSearchView.setFilter(filter: filter)
     }
+}
+
+extension MainVC: FilterSearchViewDelegate {
+    func pressedFiltersButton() {
+        showFiltersSheet()
+    }
+    
+    func pressedResetButton() {
+        outputDelegate?.resetFilterState()
+    }
+    
+    func searchTextFieldDidChange(text: String) {
+        outputDelegate?.setSearchQuery(text)
+    }
+    
+    
 }
 
 extension MainVC: CharactersCollectionViewDelegate {
