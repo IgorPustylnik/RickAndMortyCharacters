@@ -28,4 +28,12 @@ extension UIViewController {
     private func pressedBackButton() {
         navigationController?.popViewController(animated: true)
     }
+    
+    
+}
+
+extension DetailedInfoVC: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }
