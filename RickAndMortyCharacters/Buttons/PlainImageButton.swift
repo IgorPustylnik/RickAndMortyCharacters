@@ -26,7 +26,7 @@ class PlainImageButton: UIButton {
         
         config.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
-        config.image = UIImage(named: imageName)?.withTintColor(.Colors.background, renderingMode: .alwaysOriginal)
+        config.image = UIImage(named: imageName)?.withTintColor(active ? .Colors.aqua : .Colors.mainText, renderingMode: .alwaysOriginal)
         config.imagePlacement = .all
         
         self.configuration = config
@@ -47,6 +47,10 @@ class PlainImageButton: UIButton {
     
     func setActive(_ active: Bool) {
         self.active = active
+    }
+    
+    func getActive() -> Bool {
+        return active
     }
 
 }
