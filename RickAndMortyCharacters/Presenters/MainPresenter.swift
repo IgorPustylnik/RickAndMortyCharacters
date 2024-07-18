@@ -10,6 +10,7 @@ import Foundation
 class MainPresenter {
     
     private let storage = DataStorage.shared
+    private let filterModel = FilterModel()
     
     weak private var inputDelegate: MainInputDelegate?
     
@@ -21,6 +22,15 @@ class MainPresenter {
 extension MainPresenter: MainOutputDelegate {
     func refreshCharactersList() {
         inputDelegate?.setCharacters(storage.charactersList)
+    }
+    
+    func setFilterState(filter: Filter) {
+        filterModel.filter = filter
+        print(filterModel.filter)
+    }
+    
+    func getFilterState() -> Filter {
+        filterModel.filter
     }
     
     func loadMoreCharacters() {

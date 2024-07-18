@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		5525ACC52C481315005ACA0C /* DetailedInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACC42C481315005ACA0C /* DetailedInfoVC.swift */; };
 		5525ACC72C481337005ACA0C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACC62C481337005ACA0C /* InfoView.swift */; };
+		5525ACC92C486F11005ACA0C /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACC82C486F11005ACA0C /* FilterModel.swift */; };
+		5525ACCC2C48767F005ACA0C /* FilterBottomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACCB2C48767F005ACA0C /* FilterBottomVC.swift */; };
+		5525ACCE2C48FCD5005ACA0C /* FilterBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACCD2C48FCD5005ACA0C /* FilterBottomView.swift */; };
+		5525ACD02C48FD01005ACA0C /* FilterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACCF2C48FD01005ACA0C /* FilterSearchView.swift */; };
+		5525ACD42C49066B005ACA0C /* FilterToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACD32C49066B005ACA0C /* FilterToggleButton.swift */; };
+		5525ACD82C491F08005ACA0C /* CustomAquaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACD72C491F08005ACA0C /* CustomAquaButton.swift */; };
 		55B5AB342C47C4BE00250304 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB332C47C4BE00250304 /* AppDelegate.swift */; };
 		55B5AB362C47C4BE00250304 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB352C47C4BE00250304 /* SceneDelegate.swift */; };
 		55B5AB382C47C4BE00250304 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB372C47C4BE00250304 /* MainVC.swift */; };
@@ -32,6 +38,12 @@
 /* Begin PBXFileReference section */
 		5525ACC42C481315005ACA0C /* DetailedInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoVC.swift; sourceTree = "<group>"; };
 		5525ACC62C481337005ACA0C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		5525ACC82C486F11005ACA0C /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
+		5525ACCB2C48767F005ACA0C /* FilterBottomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottomVC.swift; sourceTree = "<group>"; };
+		5525ACCD2C48FCD5005ACA0C /* FilterBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottomView.swift; sourceTree = "<group>"; };
+		5525ACCF2C48FD01005ACA0C /* FilterSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSearchView.swift; sourceTree = "<group>"; };
+		5525ACD32C49066B005ACA0C /* FilterToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterToggleButton.swift; sourceTree = "<group>"; };
+		5525ACD72C491F08005ACA0C /* CustomAquaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAquaButton.swift; sourceTree = "<group>"; };
 		55B5AB302C47C4BE00250304 /* RickAndMortyCharacters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyCharacters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B5AB332C47C4BE00250304 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B5AB352C47C4BE00250304 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +84,25 @@
 				5525ACC62C481337005ACA0C /* InfoView.swift */,
 			);
 			path = DetailedInfo;
+			sourceTree = "<group>";
+		};
+		5525ACCA2C48736A005ACA0C /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				5525ACCB2C48767F005ACA0C /* FilterBottomVC.swift */,
+				5525ACCD2C48FCD5005ACA0C /* FilterBottomView.swift */,
+				5525ACCF2C48FD01005ACA0C /* FilterSearchView.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		5525ACD62C491EDF005ACA0C /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				5525ACD32C49066B005ACA0C /* FilterToggleButton.swift */,
+				5525ACD72C491F08005ACA0C /* CustomAquaButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		55B5AB272C47C4BE00250304 = {
@@ -149,6 +180,7 @@
 				55B5AB572C47C9F800250304 /* Main */,
 				5525ACC32C4812B4005ACA0C /* DetailedInfo */,
 				55B5AB642C47DF9E00250304 /* Cells */,
+				5525ACD62C491EDF005ACA0C /* Buttons */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +188,7 @@
 		55B5AB572C47C9F800250304 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				5525ACCA2C48736A005ACA0C /* Filter */,
 				55B5AB372C47C4BE00250304 /* MainVC.swift */,
 				55B5AB702C47F55A00250304 /* CharactersCollectionView.swift */,
 			);
@@ -201,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				55B5AB6E2C47E6D800250304 /* Character.swift */,
+				5525ACC82C486F11005ACA0C /* FilterModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -287,19 +321,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5525ACC92C486F11005ACA0C /* FilterModel.swift in Sources */,
 				5525ACC52C481315005ACA0C /* DetailedInfoVC.swift in Sources */,
 				55B5AB6C2C47E09500250304 /* NavigationController.swift in Sources */,
 				55B5AB632C47CF5500250304 /* Fonts.swift in Sources */,
 				55B5AB382C47C4BE00250304 /* MainVC.swift in Sources */,
+				5525ACCE2C48FCD5005ACA0C /* FilterBottomView.swift in Sources */,
+				5525ACD42C49066B005ACA0C /* FilterToggleButton.swift in Sources */,
 				55B5AB6F2C47E6D800250304 /* Character.swift in Sources */,
 				55B5AB542C47C9DC00250304 /* MainPresenter.swift in Sources */,
 				5525ACC72C481337005ACA0C /* InfoView.swift in Sources */,
 				55B5AB712C47F55A00250304 /* CharactersCollectionView.swift in Sources */,
 				55B5AB692C47E03C00250304 /* CharactersCollectionViewCell.swift in Sources */,
+				5525ACD82C491F08005ACA0C /* CustomAquaButton.swift in Sources */,
 				55B5AB5B2C47CCAE00250304 /* UIViewController + ext.swift in Sources */,
 				55B5AB342C47C4BE00250304 /* AppDelegate.swift in Sources */,
+				5525ACCC2C48767F005ACA0C /* FilterBottomVC.swift in Sources */,
 				55B5AB4B2C47C5F300250304 /* NetworkManager.swift in Sources */,
 				55B5AB362C47C4BE00250304 /* SceneDelegate.swift in Sources */,
+				5525ACD02C48FD01005ACA0C /* FilterSearchView.swift in Sources */,
 				55B5AB492C47C5CD00250304 /* DataStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -427,7 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -451,7 +491,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -483,7 +523,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
