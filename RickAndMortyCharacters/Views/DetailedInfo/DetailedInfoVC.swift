@@ -69,7 +69,7 @@ class DetailedInfoVC: UIViewController {
             infoView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             infoView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
 
-            infoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            infoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
         ])
 
         // Bind scrollView's height
