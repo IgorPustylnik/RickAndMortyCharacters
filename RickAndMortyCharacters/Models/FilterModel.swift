@@ -7,15 +7,18 @@
 
 import Foundation
 
-typealias FilterStatus = (dead: Bool, alive: Bool, unknown: Bool)
+typealias FilterStatus = [Status: Bool]
 
-typealias FilterGender = (male: Bool, female: Bool, genderless: Bool, unknown: Bool)
+typealias FilterGender = [Gender: Bool]
 
 struct Filter {
     var status: FilterStatus
     var gender: FilterGender
+    
+    static var initialState = Filter(status: [.alive: false, .dead: false, .unknown: false],
+                                     gender: [.male: false, .female: false, .genderless: false, .unknown: false])
 }
 
 class FilterModel {
-    var filter: Filter = Filter(status: (false, false, false), gender: (false, false, false, false))
+    var filter: Filter = Filter.initialState
 }

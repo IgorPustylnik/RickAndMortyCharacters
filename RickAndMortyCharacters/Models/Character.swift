@@ -8,16 +8,17 @@
 import Foundation
 import UIKit
 
-enum Status: String {
+enum Status: String, CaseIterable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "Unknown"
 }
 
-enum Gender: String {
+enum Gender: String, CaseIterable {
     case male = "Male"
     case female = "Female"
     case genderless = "Genderless"
+    case unknown = "Unknown"
 }
 
 
