@@ -207,9 +207,8 @@ class FilterBottomView: UIView {
         genderlessButton = FilterToggleButton(title: "Genderless", isOn: filter.gender[.genderless]!)
         unknownGenderButton = FilterToggleButton(title: "Unknown", isOn: filter.gender[.unknown]!)
         
-        statusButtonsScrollView = createHorizontalScrollViewForButtons(buttons: statusButtons.values.compactMap { $0 })
-        genderButtonsScrollView = createHorizontalScrollViewForButtons(buttons: genderButtons.values.compactMap { $0 })
-        
+        statusButtonsScrollView = createHorizontalScrollViewForButtons(buttons: Status.allCases.compactMap { statusButtons[$0] } .compactMap { $0 })
+        genderButtonsScrollView = createHorizontalScrollViewForButtons(buttons: Gender.allCases.compactMap { genderButtons[$0] } .compactMap { $0 })
         
     }
     
