@@ -9,12 +9,27 @@ import UIKit
 
 class CustomAquaButton: UIButton {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    private func configure(with title: String) {
+        var config = UIButton.Configuration.bordered()
+        config.buttonSize = .medium
+        config.baseBackgroundColor = .Colors.aqua
+        config.baseForegroundColor = .Colors.onColoredBackgroundText
+        config.title = title
+        config.background.cornerRadius = 16
+        config.titlePadding = 10
 
+        config.attributedTitle = AttributedString(title, attributes: AttributeContainer([.font: UIFont.IBMPlexSans.medium(size: 18)]))
+        
+        self.configuration = config
+    }
+    
+    init(title: String) {
+        super.init(frame: .zero)
+        configure(with: title)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

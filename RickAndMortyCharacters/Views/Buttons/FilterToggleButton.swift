@@ -11,7 +11,7 @@ class FilterToggleButton: UIButton {
     
     private var title: String
     
-    private var isOn: Bool = false {
+    private var isOn: Bool {
             didSet {
                 updateConfig()
             }
@@ -20,7 +20,7 @@ class FilterToggleButton: UIButton {
     private func updateConfig() {
         var config = UIButton.Configuration.bordered()
         config.buttonSize = .medium
-        config.baseBackgroundColor = isOn ? .Colors.filterSelected : .Colors.background
+        config.baseBackgroundColor = isOn ? .Colors.filterSelected : .clear
         config.baseForegroundColor = isOn ? .Colors.background : .Colors.filterSelected
         config.title = title
         config.background.cornerRadius = 24
@@ -29,7 +29,7 @@ class FilterToggleButton: UIButton {
         config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16)
         
         if isOn {
-            let image = UIImage(named: "icons/checkMark")?.withTintColor(isOn ? .Colors.background : .Colors.filterSelected, renderingMode: .alwaysOriginal)
+            let image = UIImage(named: "icons/checkMark")?.withTintColor(.Colors.background, renderingMode: .alwaysOriginal)
             config.image = image
             config.imagePadding = 8
             config.imagePlacement = .trailing
@@ -41,19 +41,12 @@ class FilterToggleButton: UIButton {
         self.configuration = config
     }
     
-    public func createToggleButton() -> UIButton {
-        let button = UIButton(type: .system)
-        updateConfig()
-        button.addTarget(self, action: #selector(toggleButtonTapped), for: .touchUpInside)
-        return button
-    }
-    
     init(title: String, isOn: Bool) {
         self.title = title
         self.isOn = isOn
         super.init(frame: .zero)
-        updateConfig()
         self.addTarget(self, action: #selector(toggleButtonTapped), for: .touchUpInside)
+        updateConfig()
     }
     
     required init?(coder: NSCoder) {
@@ -62,6 +55,10 @@ class FilterToggleButton: UIButton {
     
     @objc private func toggleButtonTapped() {
         isOn.toggle()
+    }
+    
+    func setActive(_ active: Bool) {
+        self.isOn = active
     }
     
     func getButtonState() -> Bool {
