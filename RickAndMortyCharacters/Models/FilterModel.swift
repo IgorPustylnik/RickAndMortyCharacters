@@ -20,5 +20,7 @@ struct Filter {
 }
 
 class FilterModel {
+    static var shared = FilterModel()
+    
     var filter: Filter = Filter.initialState
 }

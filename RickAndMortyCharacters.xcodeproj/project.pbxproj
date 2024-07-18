@@ -15,6 +15,9 @@
 		5525ACD02C48FD01005ACA0C /* FilterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACCF2C48FD01005ACA0C /* FilterSearchView.swift */; };
 		5525ACD42C49066B005ACA0C /* FilterToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACD32C49066B005ACA0C /* FilterToggleButton.swift */; };
 		5525ACD82C491F08005ACA0C /* CustomAquaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACD72C491F08005ACA0C /* CustomAquaButton.swift */; };
+		5525ACDC2C497EDF005ACA0C /* PlainImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACDB2C497EDF005ACA0C /* PlainImageButton.swift */; };
+		5525ACDF2C498350005ACA0C /* FilterOverviewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACDE2C498350005ACA0C /* FilterOverviewButton.swift */; };
+		5525ACE12C4989D5005ACA0C /* FilterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACE02C4989D5005ACA0C /* FilterPresenter.swift */; };
 		55B5AB342C47C4BE00250304 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB332C47C4BE00250304 /* AppDelegate.swift */; };
 		55B5AB362C47C4BE00250304 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB352C47C4BE00250304 /* SceneDelegate.swift */; };
 		55B5AB382C47C4BE00250304 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB372C47C4BE00250304 /* MainVC.swift */; };
@@ -44,6 +47,9 @@
 		5525ACCF2C48FD01005ACA0C /* FilterSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSearchView.swift; sourceTree = "<group>"; };
 		5525ACD32C49066B005ACA0C /* FilterToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterToggleButton.swift; sourceTree = "<group>"; };
 		5525ACD72C491F08005ACA0C /* CustomAquaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAquaButton.swift; sourceTree = "<group>"; };
+		5525ACDB2C497EDF005ACA0C /* PlainImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainImageButton.swift; sourceTree = "<group>"; };
+		5525ACDE2C498350005ACA0C /* FilterOverviewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOverviewButton.swift; sourceTree = "<group>"; };
+		5525ACE02C4989D5005ACA0C /* FilterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPresenter.swift; sourceTree = "<group>"; };
 		55B5AB302C47C4BE00250304 /* RickAndMortyCharacters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyCharacters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B5AB332C47C4BE00250304 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B5AB352C47C4BE00250304 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				5525ACC42C481315005ACA0C /* DetailedInfoVC.swift */,
-				5525ACC62C481337005ACA0C /* InfoView.swift */,
 			);
 			path = DetailedInfo;
 			sourceTree = "<group>";
@@ -90,8 +95,6 @@
 			isa = PBXGroup;
 			children = (
 				5525ACCB2C48767F005ACA0C /* FilterBottomVC.swift */,
-				5525ACCD2C48FCD5005ACA0C /* FilterBottomView.swift */,
-				5525ACCF2C48FD01005ACA0C /* FilterSearchView.swift */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -99,10 +102,55 @@
 		5525ACD62C491EDF005ACA0C /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				5525ACDE2C498350005ACA0C /* FilterOverviewButton.swift */,
 				5525ACD32C49066B005ACA0C /* FilterToggleButton.swift */,
 				5525ACD72C491F08005ACA0C /* CustomAquaButton.swift */,
+				5525ACDB2C497EDF005ACA0C /* PlainImageButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		5525ACE22C499B5B005ACA0C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5525ACE52C499BB4005ACA0C /* DetailedInfo */,
+				5525ACE32C499B7B005ACA0C /* Filter */,
+				5525ACE42C499B8C005ACA0C /* Collections */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5525ACE32C499B7B005ACA0C /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				5525ACCF2C48FD01005ACA0C /* FilterSearchView.swift */,
+				5525ACCD2C48FCD5005ACA0C /* FilterBottomView.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		5525ACE42C499B8C005ACA0C /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				55B5AB702C47F55A00250304 /* CharactersCollectionView.swift */,
+				55B5AB642C47DF9E00250304 /* Cells */,
+			);
+			path = Collections;
+			sourceTree = "<group>";
+		};
+		5525ACE52C499BB4005ACA0C /* DetailedInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5525ACC62C481337005ACA0C /* InfoView.swift */,
+			);
+			path = DetailedInfo;
+			sourceTree = "<group>";
+		};
+		5525ACE62C499BE9005ACA0C /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 		55B5AB272C47C4BE00250304 = {
@@ -128,7 +176,10 @@
 				55B5AB472C47C5BB00250304 /* Services */,
 				55B5AB652C47DFBF00250304 /* Models */,
 				55B5AB4F2C47C98700250304 /* Presenters */,
-				55B5AB502C47C99300250304 /* Views */,
+				55B5AB502C47C99300250304 /* Controllers */,
+				5525ACE22C499B5B005ACA0C /* Views */,
+				5525ACD62C491EDF005ACA0C /* Buttons */,
+				5525ACE62C499BE9005ACA0C /* TextFields */,
 				55B5AB4C2C47C60900250304 /* App */,
 				55B5AB612C47CF4600250304 /* Helpers */,
 				55B5AB4D2C47C62100250304 /* Resources */,
@@ -169,28 +220,26 @@
 			isa = PBXGroup;
 			children = (
 				55B5AB532C47C9DC00250304 /* MainPresenter.swift */,
+				5525ACE02C4989D5005ACA0C /* FilterPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
 		};
-		55B5AB502C47C99300250304 /* Views */ = {
+		55B5AB502C47C99300250304 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				55B5AB6A2C47E07A00250304 /* Navigation */,
 				55B5AB572C47C9F800250304 /* Main */,
 				5525ACC32C4812B4005ACA0C /* DetailedInfo */,
-				55B5AB642C47DF9E00250304 /* Cells */,
-				5525ACD62C491EDF005ACA0C /* Buttons */,
 			);
-			path = Views;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		55B5AB572C47C9F800250304 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				5525ACCA2C48736A005ACA0C /* Filter */,
 				55B5AB372C47C4BE00250304 /* MainVC.swift */,
-				55B5AB702C47F55A00250304 /* CharactersCollectionView.swift */,
+				5525ACCA2C48736A005ACA0C /* Filter */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -323,6 +372,7 @@
 			files = (
 				5525ACC92C486F11005ACA0C /* FilterModel.swift in Sources */,
 				5525ACC52C481315005ACA0C /* DetailedInfoVC.swift in Sources */,
+				5525ACDC2C497EDF005ACA0C /* PlainImageButton.swift in Sources */,
 				55B5AB6C2C47E09500250304 /* NavigationController.swift in Sources */,
 				55B5AB632C47CF5500250304 /* Fonts.swift in Sources */,
 				55B5AB382C47C4BE00250304 /* MainVC.swift in Sources */,
@@ -331,6 +381,7 @@
 				55B5AB6F2C47E6D800250304 /* Character.swift in Sources */,
 				55B5AB542C47C9DC00250304 /* MainPresenter.swift in Sources */,
 				5525ACC72C481337005ACA0C /* InfoView.swift in Sources */,
+				5525ACE12C4989D5005ACA0C /* FilterPresenter.swift in Sources */,
 				55B5AB712C47F55A00250304 /* CharactersCollectionView.swift in Sources */,
 				55B5AB692C47E03C00250304 /* CharactersCollectionViewCell.swift in Sources */,
 				5525ACD82C491F08005ACA0C /* CustomAquaButton.swift in Sources */,
@@ -340,6 +391,7 @@
 				55B5AB4B2C47C5F300250304 /* NetworkManager.swift in Sources */,
 				55B5AB362C47C4BE00250304 /* SceneDelegate.swift in Sources */,
 				5525ACD02C48FD01005ACA0C /* FilterSearchView.swift in Sources */,
+				5525ACDF2C498350005ACA0C /* FilterOverviewButton.swift in Sources */,
 				55B5AB492C47C5CD00250304 /* DataStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
