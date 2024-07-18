@@ -25,7 +25,7 @@ class FilterToggleButton: UIButton {
         config.title = title
         config.background.cornerRadius = 24
         config.background.strokeWidth = isOn ? 0 : 2
-        config.background.strokeColor = .Colors.toggleButtonBorder
+        config.background.strokeColor = .Colors.border
         config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16)
         
         if isOn {
