@@ -21,6 +21,9 @@
 		5525ACE92C499EBC005ACA0C /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACE82C499EBC005ACA0C /* SearchTextField.swift */; };
 		5525ACEE2C4AA89E005ACA0C /* RefreshCharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACED2C4AA89E005ACA0C /* RefreshCharactersCollectionViewCell.swift */; };
 		5525ACF02C4AA946005ACA0C /* NothingFoundCharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACEF2C4AA946005ACA0C /* NothingFoundCharactersCollectionViewCell.swift */; };
+		5525ACF22C4ABD8D005ACA0C /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACF12C4ABD8D005ACA0C /* NetworkMonitor.swift */; };
+		5525ACF42C4ABE37005ACA0C /* NetworkErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACF32C4ABE37005ACA0C /* NetworkErrorPresenter.swift */; };
+		5525ACF72C4ABE5D005ACA0C /* NetworkErrorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACF62C4ABE5D005ACA0C /* NetworkErrorVC.swift */; };
 		55B5AB342C47C4BE00250304 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB332C47C4BE00250304 /* AppDelegate.swift */; };
 		55B5AB362C47C4BE00250304 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB352C47C4BE00250304 /* SceneDelegate.swift */; };
 		55B5AB382C47C4BE00250304 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B5AB372C47C4BE00250304 /* MainVC.swift */; };
@@ -56,6 +59,9 @@
 		5525ACE82C499EBC005ACA0C /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		5525ACED2C4AA89E005ACA0C /* RefreshCharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshCharactersCollectionViewCell.swift; sourceTree = "<group>"; };
 		5525ACEF2C4AA946005ACA0C /* NothingFoundCharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NothingFoundCharactersCollectionViewCell.swift; sourceTree = "<group>"; };
+		5525ACF12C4ABD8D005ACA0C /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		5525ACF32C4ABE37005ACA0C /* NetworkErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorPresenter.swift; sourceTree = "<group>"; };
+		5525ACF62C4ABE5D005ACA0C /* NetworkErrorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorVC.swift; sourceTree = "<group>"; };
 		55B5AB302C47C4BE00250304 /* RickAndMortyCharacters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyCharacters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B5AB332C47C4BE00250304 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B5AB352C47C4BE00250304 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +174,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		5525ACF52C4ABE3E005ACA0C /* NetworkError */ = {
+			isa = PBXGroup;
+			children = (
+				5525ACF62C4ABE5D005ACA0C /* NetworkErrorVC.swift */,
+			);
+			path = NetworkError;
+			sourceTree = "<group>";
+		};
 		55B5AB272C47C4BE00250304 = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +221,7 @@
 			children = (
 				55B5AB482C47C5CD00250304 /* DataStorage.swift */,
 				55B5AB4A2C47C5F300250304 /* NetworkManager.swift */,
+				5525ACF12C4ABD8D005ACA0C /* NetworkMonitor.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -236,6 +251,7 @@
 			children = (
 				55B5AB532C47C9DC00250304 /* MainPresenter.swift */,
 				5525ACE02C4989D5005ACA0C /* FilterPresenter.swift */,
+				5525ACF32C4ABE37005ACA0C /* NetworkErrorPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -246,6 +262,7 @@
 				55B5AB6A2C47E07A00250304 /* Navigation */,
 				55B5AB572C47C9F800250304 /* Main */,
 				5525ACC32C4812B4005ACA0C /* DetailedInfo */,
+				5525ACF52C4ABE3E005ACA0C /* NetworkError */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -389,16 +406,19 @@
 			files = (
 				5525ACC92C486F11005ACA0C /* FilterModel.swift in Sources */,
 				5525ACC52C481315005ACA0C /* DetailedInfoVC.swift in Sources */,
+				5525ACF42C4ABE37005ACA0C /* NetworkErrorPresenter.swift in Sources */,
 				5525ACDC2C497EDF005ACA0C /* PlainImageButton.swift in Sources */,
 				55B5AB6C2C47E09500250304 /* NavigationController.swift in Sources */,
 				5525ACF02C4AA946005ACA0C /* NothingFoundCharactersCollectionViewCell.swift in Sources */,
 				55B5AB632C47CF5500250304 /* Fonts.swift in Sources */,
 				55B5AB382C47C4BE00250304 /* MainVC.swift in Sources */,
+				5525ACF22C4ABD8D005ACA0C /* NetworkMonitor.swift in Sources */,
 				5525ACCE2C48FCD5005ACA0C /* FilterBottomView.swift in Sources */,
 				5525ACEE2C4AA89E005ACA0C /* RefreshCharactersCollectionViewCell.swift in Sources */,
 				5525ACD42C49066B005ACA0C /* FilterToggleButton.swift in Sources */,
 				55B5AB6F2C47E6D800250304 /* Character.swift in Sources */,
 				55B5AB542C47C9DC00250304 /* MainPresenter.swift in Sources */,
+				5525ACF72C4ABE5D005ACA0C /* NetworkErrorVC.swift in Sources */,
 				5525ACC72C481337005ACA0C /* InfoView.swift in Sources */,
 				5525ACE12C4989D5005ACA0C /* FilterPresenter.swift in Sources */,
 				55B5AB712C47F55A00250304 /* CharactersCollectionView.swift in Sources */,
