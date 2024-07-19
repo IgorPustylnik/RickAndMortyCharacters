@@ -11,6 +11,7 @@ class MainPresenter {
     
     private let storage = DataStorage.shared
     private let filterModel = FilterModel.shared
+    private let networkManager = NetworkManager.shared
     
     init() {
         filterModel.addObserver(self)
@@ -35,7 +36,7 @@ extension MainPresenter: MainOutputDelegate {
     }
     
     func resetFilterState() {
-        filterModel.filter = Filter.initialState
+        filterModel.filter = Filter()
     }
     
     func getFilterState() -> Filter {

@@ -10,12 +10,14 @@ import UIKit
 class FilterToggleButton: UIButton {
     
     private var title: String
+    private var toggleAction: (() -> Void)?
     
     private var isOn: Bool {
-            didSet {
-                updateConfig()
-            }
+        didSet {
+            print(title)
+            updateConfig()
         }
+    }
     
     private func updateConfig() {
         var config = UIButton.Configuration.bordered()
@@ -41,9 +43,10 @@ class FilterToggleButton: UIButton {
         self.configuration = config
     }
     
-    init(title: String, isOn: Bool) {
+    init(title: String, isOn: Bool, toggleAction: (() -> Void)?) {
         self.title = title
         self.isOn = isOn
+        self.toggleAction = toggleAction
         super.init(frame: .zero)
         self.addTarget(self, action: #selector(toggleButtonTapped), for: .touchUpInside)
         updateConfig()
@@ -55,6 +58,7 @@ class FilterToggleButton: UIButton {
     
     @objc private func toggleButtonTapped() {
         isOn.toggle()
+        toggleAction?()
     }
     
     func setActive(_ active: Bool) {

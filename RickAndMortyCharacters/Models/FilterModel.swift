@@ -7,16 +7,12 @@
 
 import Foundation
 
-typealias FilterStatus = [Status: Bool]
 
 typealias FilterGender = [Gender: Bool]
 
 struct Filter {
-    var status: FilterStatus
-    var gender: FilterGender
-
-    static var initialState = Filter(status: [.alive: false, .dead: false, .unknown: false],
-                                     gender: [.male: false, .female: false, .genderless: false, .unknown: false])
+    var status: Status?
+    var gender: Gender?
 }
 
 protocol FilterObserver: AnyObject {
@@ -28,7 +24,7 @@ class FilterModel {
 
     private var observers = [FilterObserver]()
 
-    var filter: Filter = Filter.initialState {
+    var filter: Filter = Filter() {
         didSet {
             notifyObservers()
         }

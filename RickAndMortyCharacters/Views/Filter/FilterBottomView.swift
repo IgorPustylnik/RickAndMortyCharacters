@@ -126,6 +126,8 @@ class FilterBottomView: UIView {
     private var aliveStatusButton: FilterToggleButton?
     private var deadStatusButton: FilterToggleButton?
     private var unknownStatusButton: FilterToggleButton?
+    
+    private var activeStatusButton: FilterToggleButton?
 
     // MARK: - Gender filter
 
@@ -159,6 +161,8 @@ class FilterBottomView: UIView {
     private var femaleGenderButton: FilterToggleButton?
     private var genderlessButton: FilterToggleButton?
     private var unknownGenderButton: FilterToggleButton?
+    
+    private var activeGenderButton: FilterToggleButton?
 
     // MARK: - Apply button
 
@@ -197,20 +201,46 @@ class FilterBottomView: UIView {
     
     private func setupFiltersButtons() {
         guard let filter else { return }
+
+        aliveStatusButton = FilterToggleButton(title: "Alive", isOn: filter.status == .alive, toggleAction: { self.updateActiveStatusButton(button: self.aliveStatusButton)})
         
-        aliveStatusButton = FilterToggleButton(title: "Alive", isOn: filter.status[.alive]!)
-        deadStatusButton = FilterToggleButton(title: "Dead", isOn: filter.status[.dead]!)
-        unknownStatusButton = FilterToggleButton(title: "Unknown", isOn: filter.status[.unknown]!)
+        deadStatusButton = FilterToggleButton(title: "Dead", isOn: filter.status == .dead, toggleAction: { self.updateActiveStatusButton(button: self.deadStatusButton)})
+
+        unknownStatusButton = FilterToggleButton(title: "Unknown", isOn: filter.status == .unknown, toggleAction: { self.updateActiveStatusButton(button: self.unknownStatusButton)})
+
+        maleGenderButton = FilterToggleButton(title: "Male", isOn: filter.gender == .male, toggleAction: { self.updateActiveGenderButton(button: self.maleGenderButton)})
         
-        maleGenderButton = FilterToggleButton(title: "Male", isOn: filter.gender[.male]!)
-        femaleGenderButton = FilterToggleButton(title: "Female", isOn: filter.gender[.female]!)
-        genderlessButton = FilterToggleButton(title: "Genderless", isOn: filter.gender[.genderless]!)
-        unknownGenderButton = FilterToggleButton(title: "Unknown", isOn: filter.gender[.unknown]!)
+        femaleGenderButton = FilterToggleButton(title: "Female", isOn: filter.gender == .female, toggleAction: { self.updateActiveGenderButton(button: self.femaleGenderButton)})
         
+        genderlessButton = FilterToggleButton(title: "Genderless", isOn: filter.gender == .genderless, toggleAction: { self.updateActiveGenderButton(button: self.genderlessButton)})
+        
+        unknownGenderButton = FilterToggleButton(title: "Unknown", isOn: filter.gender == .unknown, toggleAction: { self.updateActiveGenderButton(button: self.unknownGenderButton)})
+        
+        updateButtonStates()
+
         statusButtonsScrollView = createHorizontalScrollViewForButtons(buttons: Status.allCases.compactMap { statusButtons[$0] } .compactMap { $0 })
         genderButtonsScrollView = createHorizontalScrollViewForButtons(buttons: Gender.allCases.compactMap { genderButtons[$0] } .compactMap { $0 })
-        
     }
+
+    
+    private func updateActiveStatusButton(button: FilterToggleButton?) {
+        activeStatusButton?.setActive(false)
+        if button == activeStatusButton {
+            activeStatusButton = nil
+        } else {
+            activeStatusButton = button
+        }
+    }
+
+    private func updateActiveGenderButton(button: FilterToggleButton?) {
+        activeGenderButton?.setActive(false)
+        if button == activeGenderButton {
+            activeGenderButton = nil
+        } else {
+            activeGenderButton = button
+        }
+    }
+
     
     private func setupButtonsTargets() {
         closeButton.addTarget(self, action: #selector(pressedCloseButton), for: .touchUpInside)
@@ -222,11 +252,17 @@ class FilterBottomView: UIView {
         guard let filter else { return }
         Gender.allCases.forEach { genderType in
             guard let button = genderButtons[genderType] else { return }
-            button?.setActive(filter.gender[genderType]!)
+            button?.setActive(filter.gender == genderType)
+            if filter.gender == genderType {
+                updateActiveGenderButton(button: button)
+            }
         }
         Status.allCases.forEach { statusType in
             guard let button = statusButtons[statusType] else { return }
-            button?.setActive(filter.status[statusType]!)
+            button?.setActive(filter.status == statusType)
+            if filter.status == statusType {
+                updateActiveStatusButton(button: button)
+            }
         }
     }
 
@@ -237,11 +273,21 @@ class FilterBottomView: UIView {
         guard var filter = filter else { return }
         
         // Save buttons state
-        for (genderType, button) in genderButtons {
-            filter.gender[genderType] = button?.getButtonState()
-        }
         for (statusType, button) in statusButtons {
-            filter.status[statusType] = button?.getButtonState()
+            if let active = button?.getButtonState() {
+                if active {
+                    filter.status = statusType
+                    break
+                }
+            }
+        }
+        for (genderType, button) in genderButtons {
+            if let active = button?.getButtonState() {
+                if active {
+                    filter.gender = genderType
+                    break
+                }
+            }
         }
 
         delegate?.pressedApplyFilter(with: filter)
@@ -253,7 +299,7 @@ class FilterBottomView: UIView {
     }
 
     @objc func pressedResetButton() {
-        filter = Filter.initialState
+        filter = Filter()
         updateButtonStates()
     }
 }

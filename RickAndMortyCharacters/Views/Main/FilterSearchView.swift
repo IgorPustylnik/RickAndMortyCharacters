@@ -102,19 +102,14 @@ class FilterSearchView: UIView {
     private func getButtonList(filter: Filter) -> [FilterOverviewButton] {
         var list: [FilterOverviewButton] = []
 
-        Status.allCases.forEach { statusType in
-            guard let add = filter.status[statusType] else { return }
-            if add {
-                let filterButton = FilterOverviewButton(title: statusType.rawValue, clickable: false)
-                list.append(filterButton)
-            }
+        if let status = filter.status {
+            let filterButton = FilterOverviewButton(title: status.rawValue, clickable: false)
+            list.append(filterButton)
         }
-        Gender.allCases.forEach { genderType in
-            guard let add = filter.gender[genderType] else { return }
-            if add {
-                let filterButton = FilterOverviewButton(title: genderType.rawValue, clickable: false)
-                list.append(filterButton)
-            }
+            
+        if let gender = filter.gender {
+            let filterButton = FilterOverviewButton(title: gender.rawValue, clickable: false)
+            list.append(filterButton)
         }
 
         if !list.isEmpty {
@@ -182,7 +177,7 @@ class FilterSearchView: UIView {
 
     @objc private func pressedResetButton() {
         delegate?.pressedResetButton()
-        setFilter(filter: .initialState)
+        setFilter(filter: Filter())
     }
 
     @objc private func searchTextFieldDidChange() {
