@@ -102,7 +102,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         statusAndSpeciesLabel.attributedText = createColoredString(
             status: character.status,
             species: character.species)
-        genderLabel.text = character.gender.rawValue
+        genderLabel.text = character.gender == .unknown ? "Unknown" : character.gender.rawValue
         setupLayout()
     }
 
@@ -133,9 +133,10 @@ class CharactersCollectionViewCell: UICollectionViewCell {
 
 extension CharactersCollectionViewCell {
     private func createColoredString(status: Status, species: String) -> NSAttributedString {
-        let text = "\(status.rawValue) • \(species)"
+        let statusString = status == .unknown ? "Unknown" : status.rawValue
+        let text = "\(statusString) • \(species)"
         let string = NSMutableAttributedString(string: text)
-        let statusRange = (text as NSString).range(of: status.rawValue)
+        let statusRange = (text as NSString).range(of: statusString)
 
         var color: CGColor
         switch status {

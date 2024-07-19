@@ -153,7 +153,7 @@ class InfoView: UIView {
         }
 
         // Set status
-        statusLabel.text = character.status.rawValue
+        statusLabel.text = character.status == .unknown ? "Unknown" : character.status.rawValue
         switch character.status {
         case .alive:
             statusView.backgroundColor = .Colors.green
@@ -175,7 +175,7 @@ class InfoView: UIView {
         }
 
         bottomVStack.addArrangedSubview(createLabel(title: "Species", info: character.species))
-        bottomVStack.addArrangedSubview(createLabel(title: "Gender", info: character.gender.rawValue))
+        bottomVStack.addArrangedSubview(createLabel(title: "Gender", info: character.gender == .unknown ? "Unknown" : character.gender.rawValue))
         bottomVStack.addArrangedSubview(createLabel(title: "Episodes", info: episodes))
         bottomVStack.addArrangedSubview(createLabel(title: "Last known location", info: character.location))
     }
