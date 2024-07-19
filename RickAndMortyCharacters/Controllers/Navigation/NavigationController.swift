@@ -15,7 +15,6 @@ class NavigationController: UINavigationController {
         // Custom title font
         navigationBar.titleTextAttributes = [.foregroundColor: UIColor.Colors.mainText, .font: UIFont.IBMPlexSans.bold(size: 24)]
         
-//        navigationBar.backgroundColor = .Colors.background
     }
 
 }

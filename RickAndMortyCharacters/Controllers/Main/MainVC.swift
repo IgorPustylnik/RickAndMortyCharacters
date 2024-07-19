@@ -34,7 +34,7 @@ class MainVC: UIViewController {
         outputDelegate = presenter
         presenter.setInputDelegate(mainInputDelegate: self)
         
-        addHidingSheetGestureRecognizer()
+        addDismissAllOverlayingComponentsGestureRecognizer()
         
         setupLayout()
     }
@@ -83,16 +83,17 @@ class MainVC: UIViewController {
         present(viewControllerToPresent, animated: true, completion: nil)
     }
     
-    private func addHidingSheetGestureRecognizer() {
-        tapBottomSheetHider = UITapGestureRecognizer(target: self, action: #selector(hideBottomSheet))
+    private func addDismissAllOverlayingComponentsGestureRecognizer() {
+        tapBottomSheetHider = UITapGestureRecognizer(target: self, action: #selector(dismissAllOverlays))
         guard let tapBottomSheetHider else { return }
         view.addGestureRecognizer(tapBottomSheetHider)
         tapBottomSheetHider.cancelsTouchesInView = false
     }
     
     @objc
-    private func hideBottomSheet() {
+    private func dismissAllOverlays() {
         tapBottomSheetHider?.cancelsTouchesInView = false
+        view.endEditing(true)
         dismiss(animated: true)
     }
 
