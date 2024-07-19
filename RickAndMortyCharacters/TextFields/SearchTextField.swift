@@ -41,4 +41,12 @@ class SearchTextField: UITextField {
         leftView = imageContainerView
         leftViewMode = .always
     }
+    
+    // update border color when system appearance is changed
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            layer.borderColor = UIColor.Colors.border.cgColor
+        }
+    }
 }
