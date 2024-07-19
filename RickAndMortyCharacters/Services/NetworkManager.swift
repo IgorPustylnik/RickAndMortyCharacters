@@ -101,6 +101,14 @@ class NetworkManager {
         let nextPage = storage.incrementCurrentPage()
         fetchCharactersRawList(filter: filter, page: nextPage) { result in
             switch result {
+            case let .failure(.decoding):
+                self.storage.resetCurrentPage()
+                self.storage.setTotalPages(-1)
+                self.storage.charactersList.removeAll()
+                DispatchQueue.main.async {
+                    self.delegate?.refreshViews()
+                    completion()
+                }
             case let .failure(error):
                 print("Error occured: \(error)")
 

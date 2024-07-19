@@ -20,8 +20,8 @@ class NothingFoundCharactersCollectionViewCell: UICollectionViewCell {
         $0.clipsToBounds = true
         
         NSLayoutConstraint.activate([
-            $0.heightAnchor.constraint(equalToConstant: 200),
-            $0.widthAnchor.constraint(equalToConstant: 200)
+            $0.heightAnchor.constraint(equalToConstant: 261),
+            $0.widthAnchor.constraint(equalToConstant: 261)
         ])
         
         return $0
@@ -36,7 +36,7 @@ class NothingFoundCharactersCollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             vStackView.centerYAnchor.constraint(equalTo: $0.centerYAnchor),
-            vStackView.leadingAnchor.constraint(equalTo: $0.leadingAnchor, constant: -46)
+            vStackView.trailingAnchor.constraint(equalTo: $0.trailingAnchor, constant: -46)
         ])
         
         return $0
@@ -81,16 +81,17 @@ class NothingFoundCharactersCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupLayout() {
-
-        addSubview(nothingFoundImageView)
+        
         addSubview(hView)
+        addSubview(nothingFoundImageView)
 
         NSLayoutConstraint.activate([
             nothingFoundImageView.topAnchor.constraint(equalTo: topAnchor),
-            nothingFoundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            nothingFoundImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -20),
             
-            hView.topAnchor.constraint(equalTo: nothingFoundImageView.bottomAnchor, constant: -332),
-            hView.heightAnchor.constraint(equalToConstant: 332),
+            hView.topAnchor.constraint(equalTo: nothingFoundImageView.bottomAnchor, constant: -107),
+            hView.heightAnchor.constraint(equalToConstant: 107),
+            hView.widthAnchor.constraint(equalTo: widthAnchor)
         ])
     }
 

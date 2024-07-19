@@ -111,7 +111,9 @@ extension CharactersCollectionView: UICollectionViewDataSource {
 extension CharactersCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         deselectItem(at: indexPath, animated: true)
-        guard let character = characters?[indexPath.row] else { return }
+        guard let characters else { return }
+        guard !characters.isEmpty else { return }
+        let character = characters[indexPath.row]
         ccvDelegate?.showCharacter(character)
     }
 }
@@ -119,7 +121,7 @@ extension CharactersCollectionView: UICollectionViewDelegate {
 extension CharactersCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let characters = characters, characters.isEmpty {
-            return CGSize(width: UIScreen.main.bounds.width, height: 480)
+            return CGSize(width: frame.width, height: 260)
         }
         return CGSize(width: frame.width, height: 96)
     }
