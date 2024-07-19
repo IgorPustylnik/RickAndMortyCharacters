@@ -56,8 +56,8 @@ class MainVC: UIViewController {
             
             charactersCollectionView.topAnchor.constraint(equalTo: filterSearchView.bottomAnchor, constant: 24),
             charactersCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            charactersCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            charactersCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            charactersCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            charactersCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
     
