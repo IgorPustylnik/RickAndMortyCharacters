@@ -104,7 +104,7 @@ class FilterSearchView: UIView {
 
         if let status = filter.status {
             let title = status == .unknown ? "Unknown" : status.rawValue
-            let filterButton = FilterOverviewButton(title: status.rawValue, clickable: false)
+            let filterButton = FilterOverviewButton(title: title, clickable: false)
             list.append(filterButton)
         }
             

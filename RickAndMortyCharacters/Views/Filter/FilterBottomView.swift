@@ -176,6 +176,9 @@ class FilterBottomView: UIView {
 
     func setFilter(_ filter: Filter?) {
         self.filter = filter
+        
+        setupFiltersButtons()
+        setupButtonsTargets()
         setupLayout()
     }
 
@@ -183,9 +186,6 @@ class FilterBottomView: UIView {
 
     private func setupLayout() {
         translatesAutoresizingMaskIntoConstraints = false
-        
-        setupFiltersButtons()
-        setupButtonsTargets()
 
         addSubview(mainVStack)
 
@@ -249,21 +249,21 @@ class FilterBottomView: UIView {
     }
     
     private func updateButtonStates() {
-        activeStatusButton = nil
         guard let filter else { return }
-        Gender.allCases.forEach { genderType in
-            guard let button = genderButtons[genderType] else { return }
-            button?.setActive(filter.gender == genderType)
-            if filter.gender == genderType {
-                updateActiveGenderButton(button: button)
-            }
-        }
-        activeGenderButton = nil
+        activeStatusButton = nil
         Status.allCases.forEach { statusType in
             guard let button = statusButtons[statusType] else { return }
             button?.setActive(filter.status == statusType)
             if filter.status == statusType {
                 updateActiveStatusButton(button: button)
+            }
+        }
+        activeGenderButton = nil
+        Gender.allCases.forEach { genderType in
+            guard let button = genderButtons[genderType] else { return }
+            button?.setActive(filter.gender == genderType)
+            if filter.gender == genderType {
+                updateActiveGenderButton(button: button)
             }
         }
     }
@@ -275,6 +275,7 @@ class FilterBottomView: UIView {
         guard var filter = filter else { return }
         
         // Save buttons state
+        filter.status = nil
         for (statusType, button) in statusButtons {
             if let active = button?.getButtonState() {
                 if active {
@@ -283,6 +284,7 @@ class FilterBottomView: UIView {
                 }
             }
         }
+        filter.gender = nil
         for (genderType, button) in genderButtons {
             if let active = button?.getButtonState() {
                 if active {

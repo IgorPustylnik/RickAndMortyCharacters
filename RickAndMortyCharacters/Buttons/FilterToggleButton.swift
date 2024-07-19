@@ -14,7 +14,6 @@ class FilterToggleButton: UIButton {
     
     private var isOn: Bool {
         didSet {
-            print(title)
             updateConfig()
         }
     }
@@ -30,14 +29,14 @@ class FilterToggleButton: UIButton {
         config.background.strokeColor = .Colors.border
         config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16)
         
-        if isOn {
-            let image = UIImage(named: "icons/checkMark")?.withTintColor(.Colors.background, renderingMode: .alwaysOriginal)
-            config.image = image
-            config.imagePadding = 8
-            config.imagePlacement = .trailing
-        } else {
-            config.image = nil
-        }
+//        if isOn {
+//            let image = UIImage(named: "icons/checkMark")?.withTintColor(.Colors.background, renderingMode: .alwaysOriginal)
+//            config.image = image
+//            config.imagePadding = 8
+//            config.imagePlacement = .trailing
+//        } else {
+//            config.image = nil
+//        }
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([.font: UIFont.IBMPlexSans.regular(size: 12)]))
         
         self.configuration = config
