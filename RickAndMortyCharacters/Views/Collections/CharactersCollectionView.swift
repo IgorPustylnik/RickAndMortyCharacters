@@ -22,7 +22,7 @@ class CharactersCollectionView: UICollectionView {
             reloadData()
         }
     }
-
+    
     private var activityIndiator = UIActivityIndicatorView(style: .medium)
 
     init(ccvDelegate: CharactersCollectionViewDelegate) {

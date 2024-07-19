@@ -30,6 +30,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
             if let image {
                 spinner.stopAnimating()
                 spinner.isHidden = true
+                imageView.isHidden = false
             }
         }
     }

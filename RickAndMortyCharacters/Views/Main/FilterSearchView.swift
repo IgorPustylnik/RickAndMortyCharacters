@@ -177,6 +177,7 @@ class FilterSearchView: UIView {
 
     @objc private func pressedResetButton() {
         delegate?.pressedResetButton()
+        searchTextField.text = ""
         setFilter(filter: Filter())
     }
 
