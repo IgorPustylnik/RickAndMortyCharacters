@@ -9,11 +9,16 @@ import UIKit
 
 protocol CharactersCollectionViewDelegate: AnyObject {
     func showCharacter(_ character: CharacterData)
+    func isLastPage() -> Bool?
+    func loadMoreData(completion: @escaping () -> Void)
 }
 
 class CharactersCollectionView: UICollectionView {
     private var characters: [CharacterData]?
     weak private var ccvDelegate: CharactersCollectionViewDelegate?
+    
+    private var isLoading: Bool = false
+    private var activityIndiator = UIActivityIndicatorView(style: .medium)
     
     init(ccvDelegate: CharactersCollectionViewDelegate) {
         let layout = UICollectionViewFlowLayout()
@@ -37,6 +42,24 @@ class CharactersCollectionView: UICollectionView {
     public func setCharacters(_ characters: [CharacterData]) {
         self.characters = characters
         reloadData()
+    }
+    
+    private func loadMoreData() {
+        guard let ccvDelegate = ccvDelegate else { return }
+        guard let isLastPage = ccvDelegate.isLastPage() else { return }
+        guard !isLastPage else { return }
+        isLoading = true
+//        showLoadingIndicator()
+        
+        ccvDelegate.loadMoreData {
+//            self.hideLoadingIndicator()
+            self.isLoading = false
+        }
+    }
+    
+    public func scrollToTop() {
+        let topIndexPath = IndexPath(item: 0, section: 0)
+        scrollToItem(at: topIndexPath, at: .top, animated: true)
     }
 
 }
@@ -74,6 +97,16 @@ extension CharactersCollectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         4
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height && !isLoading {
+            loadMoreData()
+        }
     }
 }
 

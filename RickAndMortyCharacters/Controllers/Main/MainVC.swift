@@ -16,7 +16,8 @@ protocol MainOutputDelegate: AnyObject {
     func resetFilterState()
     func refreshCharactersList()
     func setSearchQuery(_ query: String)
-    func loadMoreCharacters()
+    func loadCharacters(completion: @escaping () -> Void)
+    func isLastPage() -> Bool?
 }
 
 class MainVC: UIViewController {
@@ -33,10 +34,7 @@ class MainVC: UIViewController {
         outputDelegate = presenter
         presenter.setInputDelegate(mainInputDelegate: self)
         
-        outputDelegate?.refreshCharactersList()
-        
         addHidingSheetGestureRecognizer()
-//        addHidingKeyboardGesture()
         
         setupLayout()
     }
@@ -118,6 +116,7 @@ extension MainVC: FilterSearchViewDelegate {
     
     func pressedResetButton() {
         outputDelegate?.resetFilterState()
+        charactersCollectionView.scrollToTop()
     }
     
     func searchTextFieldDidChange(text: String) {
@@ -132,6 +131,16 @@ extension MainVC: CharactersCollectionViewDelegate {
         let detailedInfoVC = DetailedInfoVC()
         detailedInfoVC.setCharacter(character)
         navigationController?.pushViewController(detailedInfoVC, animated: true)
+    }
+    
+    func isLastPage() -> Bool? {
+        outputDelegate?.isLastPage()
+    }
+    
+    func loadMoreData(completion: @escaping () -> Void) {
+        outputDelegate?.loadCharacters {
+            completion()
+        }
     }
     
 }

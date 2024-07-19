@@ -249,6 +249,7 @@ class FilterBottomView: UIView {
     }
     
     private func updateButtonStates() {
+        activeStatusButton = nil
         guard let filter else { return }
         Gender.allCases.forEach { genderType in
             guard let button = genderButtons[genderType] else { return }
@@ -257,6 +258,7 @@ class FilterBottomView: UIView {
                 updateActiveGenderButton(button: button)
             }
         }
+        activeGenderButton = nil
         Status.allCases.forEach { statusType in
             guard let button = statusButtons[statusType] else { return }
             button?.setActive(filter.status == statusType)
@@ -346,6 +348,8 @@ extension FilterBottomView {
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            stackView.heightAnchor.constraint(equalToConstant: 36),
 
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])

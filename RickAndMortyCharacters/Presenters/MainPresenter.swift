@@ -14,6 +14,8 @@ class MainPresenter {
     private let networkManager = NetworkManager.shared
     
     init() {
+        networkManager.setDelegate(delegate: self)
+        storage.addObserver(self)
         filterModel.addObserver(self)
     }
     
@@ -21,6 +23,14 @@ class MainPresenter {
     
     func setInputDelegate(mainInputDelegate: MainInputDelegate) {
         self.inputDelegate = mainInputDelegate
+    }
+}
+
+extension MainPresenter: DataStorageObserver {
+    func storageDidUpdate(_ charactersList: [CharacterData]) {
+        DispatchQueue.main.async {
+            self.inputDelegate?.refreshCharactersView(charactersList)
+        }
     }
 }
 
@@ -37,6 +47,8 @@ extension MainPresenter: MainOutputDelegate {
     
     func resetFilterState() {
         filterModel.filter = Filter()
+        storage.resetCurrentPage()
+        networkManager.fetchCharacters(filter: filterModel.filter) {}
     }
     
     func getFilterState() -> Filter {
@@ -44,11 +56,25 @@ extension MainPresenter: MainOutputDelegate {
     }
     
     func setSearchQuery(_ query: String) {
-        filterModel.searchQuery = query
+        filterModel.filter.name = query
+        storage.resetCurrentPage()
+        networkManager.fetchCharacters(filter: filterModel.filter) {}
     }
     
-    func loadMoreCharacters() {
-        // TODO: - Network call
+    func loadCharacters(completion: @escaping () -> Void) { 
+        networkManager.fetchCharacters(filter: filterModel.filter) {
+            completion()
+        }
     }
     
+    func isLastPage() -> Bool? {
+        return storage.isLastPage()
+    }
+    
+}
+
+extension MainPresenter: NetworkManagerDelegate {
+    func refreshViews() {
+        inputDelegate?.refreshCharactersView(storage.charactersList)
+    }
 }

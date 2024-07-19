@@ -11,6 +11,7 @@ import Foundation
 typealias FilterGender = [Gender: Bool]
 
 struct Filter {
+    var name: String?
     var status: Status?
     var gender: Gender?
 }
@@ -39,6 +40,4 @@ class FilterModel {
             $0.filterDidUpdate(filter)
         }
     }
-
-    var searchQuery: String = ""
 }

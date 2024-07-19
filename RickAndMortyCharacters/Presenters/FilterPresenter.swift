@@ -11,6 +11,7 @@ class FilterPresenter {
     
     private let storage = DataStorage.shared
     private let filterModel = FilterModel.shared
+    private let networkManager = NetworkManager.shared
     
     weak private var inputDelegate: FilterInputDelegate?
     
@@ -23,6 +24,8 @@ extension FilterPresenter: FilterOutputDelegate {
     
     func applyFilter(_ filter: Filter) {
         filterModel.filter = filter
+        storage.resetCurrentPage()
+        networkManager.fetchCharacters(filter: filter) {}
     }
     
     func refreshFilterOnView() {
