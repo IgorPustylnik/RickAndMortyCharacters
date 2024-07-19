@@ -19,13 +19,16 @@ class SearchTextField: UITextField {
     }
     
     private func configure() {
-        placeholder = "Search"
         autocorrectionType = .no
         autocapitalizationType = .none
         backgroundColor = .Colors.background
         layer.cornerRadius = 16
         layer.borderWidth = 2
         layer.borderColor = UIColor.Colors.border.cgColor
+        
+        attributedPlaceholder = NSAttributedString(string: "Search", attributes: [.font: UIFont.IBMPlexSans.regular(size: 14)])
+        font = UIFont.IBMPlexSans.regular(size: 14)
+        textColor = .Colors.secondaryText
         
         let imageView = UIImageView(frame: CGRect(x: 13, y: 13, width: 16.68, height: 16))
         let image = UIImage(named: "icons/search")?.withTintColor(.Colors.secondaryText, renderingMode: .alwaysOriginal)
