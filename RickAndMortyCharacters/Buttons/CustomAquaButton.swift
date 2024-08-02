@@ -8,6 +8,19 @@
 import UIKit
 
 class CustomAquaButton: UIButton {
+    // MARK: - Lifecycle
+
+    init(title: String) {
+        super.init(frame: .zero)
+        configure(with: title)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Configuration
+
     private func configure(with title: String) {
         var config = UIButton.Configuration.bordered()
         config.buttonSize = .medium
@@ -22,14 +35,5 @@ class CustomAquaButton: UIButton {
                                                   ]))
 
         configuration = config
-    }
-
-    init(title: String) {
-        super.init(frame: .zero)
-        configure(with: title)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

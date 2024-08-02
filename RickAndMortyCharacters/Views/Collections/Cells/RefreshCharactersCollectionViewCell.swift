@@ -25,6 +25,8 @@ class RefreshCharactersCollectionViewCell: UICollectionViewCell {
         spinner.startAnimating()
     }
 
+    // MARK: - Layout setup
+
     private func setupLayout() {
         addSubview(spinner)
 

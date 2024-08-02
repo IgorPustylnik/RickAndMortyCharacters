@@ -34,20 +34,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
     }
 
-    @objc func showOfflineDeviceUI(notification: Notification) {
-        if NetworkMonitor.shared.isConnected {
-            DispatchQueue.main.async { [self] in
-                self.rootController = NavigationController(rootViewController: MainVC())
-                self.window?.rootViewController = rootController
-            }
-        } else {
-            DispatchQueue.main.async { [self] in
-                self.rootController = NetworkErrorVC()
-                self.window?.rootViewController = rootController
-            }
-        }
-    }
-
     func sceneDidDisconnect(_ scene: UIScene) {
     }
 
@@ -61,5 +47,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
+    }
+}
+
+// MARK: - Selectors
+
+extension SceneDelegate {
+    @objc func showOfflineDeviceUI(notification: Notification) {
+        if NetworkMonitor.shared.isConnected {
+            DispatchQueue.main.async { [self] in
+                self.rootController = NavigationController(rootViewController: MainVC())
+                self.window?.rootViewController = rootController
+            }
+        } else {
+            DispatchQueue.main.async { [self] in
+                self.rootController = NetworkErrorVC()
+                self.window?.rootViewController = rootController
+            }
+        }
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55075FE12C5CF51F0014FAC1 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55075FE02C5CF51F0014FAC1 /* APIEndpoint.swift */; };
+		55075FE32C5CF6F40014FAC1 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55075FE22C5CF6F40014FAC1 /* Filter.swift */; };
 		5525ACC52C481315005ACA0C /* DetailedInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACC42C481315005ACA0C /* DetailedInfoVC.swift */; };
 		5525ACC72C481337005ACA0C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACC62C481337005ACA0C /* InfoView.swift */; };
 		5525ACC92C486F11005ACA0C /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5525ACC82C486F11005ACA0C /* FilterModel.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55075FE02C5CF51F0014FAC1 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		55075FE22C5CF6F40014FAC1 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		5525ACC42C481315005ACA0C /* DetailedInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoVC.swift; sourceTree = "<group>"; };
 		5525ACC62C481337005ACA0C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		5525ACC82C486F11005ACA0C /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 				55B5AB482C47C5CD00250304 /* DataStorage.swift */,
 				55B5AB4A2C47C5F300250304 /* NetworkManager.swift */,
 				5525ACF12C4ABD8D005ACA0C /* NetworkMonitor.swift */,
+				55075FE02C5CF51F0014FAC1 /* APIEndpoint.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 			children = (
 				55B5AB6E2C47E6D800250304 /* Character.swift */,
 				5525ACC82C486F11005ACA0C /* FilterModel.swift */,
+				55075FE22C5CF6F40014FAC1 /* Filter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -424,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5525ACC92C486F11005ACA0C /* FilterModel.swift in Sources */,
+				55075FE32C5CF6F40014FAC1 /* Filter.swift in Sources */,
 				5525ACC52C481315005ACA0C /* DetailedInfoVC.swift in Sources */,
 				5525ACDC2C497EDF005ACA0C /* PlainImageButton.swift in Sources */,
 				55B5AB6C2C47E09500250304 /* NavigationController.swift in Sources */,
@@ -442,6 +449,7 @@
 				55B5AB712C47F55A00250304 /* CharactersCollectionView.swift in Sources */,
 				55B5AB692C47E03C00250304 /* CharactersCollectionViewCell.swift in Sources */,
 				5525ACD82C491F08005ACA0C /* CustomAquaButton.swift in Sources */,
+				55075FE12C5CF51F0014FAC1 /* APIEndpoint.swift in Sources */,
 				55B5AB5B2C47CCAE00250304 /* UIViewController + ext.swift in Sources */,
 				55B5AB342C47C4BE00250304 /* AppDelegate.swift in Sources */,
 				5525ACCC2C48767F005ACA0C /* FilterBottomVC.swift in Sources */,

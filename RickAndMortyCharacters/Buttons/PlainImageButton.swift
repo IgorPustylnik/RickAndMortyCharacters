@@ -11,11 +11,37 @@ class PlainImageButton: UIButton {
     private var imageName: String
     private var size: UIButton.Configuration.Size
 
+    // MARK: - Activity
+
     private var active: Bool {
         didSet {
             updateConfig()
         }
     }
+
+    func setActive(_ active: Bool) {
+        self.active = active
+    }
+
+    func getActive() -> Bool {
+        return active
+    }
+
+    // MARK: - Lifecycle
+
+    init(imageName: String, active: Bool, size: UIButton.Configuration.Size) {
+        self.active = active
+        self.imageName = imageName
+        self.size = size
+        super.init(frame: .zero)
+        updateConfig()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Configuration
 
     private func updateConfig() {
         var config = UIButton.Configuration.borderless()
@@ -32,25 +58,5 @@ class PlainImageButton: UIButton {
         config.imagePlacement = .all
 
         configuration = config
-    }
-
-    init(imageName: String, active: Bool, size: UIButton.Configuration.Size) {
-        self.active = active
-        self.imageName = imageName
-        self.size = size
-        super.init(frame: .zero)
-        updateConfig()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func setActive(_ active: Bool) {
-        self.active = active
-    }
-
-    func getActive() -> Bool {
-        return active
     }
 }

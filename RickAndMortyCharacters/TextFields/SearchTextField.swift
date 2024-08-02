@@ -8,6 +8,9 @@
 import UIKit
 
 class SearchTextField: UITextField {
+
+    // MARK: - Lifecycle
+
     init() {
         super.init(frame: .zero)
         configure()
@@ -16,6 +19,8 @@ class SearchTextField: UITextField {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Configuration
 
     private func configure() {
         autocorrectionType = .no

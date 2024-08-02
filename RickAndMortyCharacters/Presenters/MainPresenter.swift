@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - MainPresenter
+
 class MainPresenter {
     private let storage = DataStorage.shared
     private let filterModel = FilterModel.shared
@@ -25,6 +27,8 @@ class MainPresenter {
     }
 }
 
+// MARK: - DataStorageObserver
+
 extension MainPresenter: DataStorageObserver {
     func storageDidUpdate(_ charactersList: [CharacterData]) {
         DispatchQueue.main.async {
@@ -33,11 +37,15 @@ extension MainPresenter: DataStorageObserver {
     }
 }
 
+// MARK: - FilterObserver
+
 extension MainPresenter: FilterObserver {
     func filterDidUpdate(_ filter: Filter) {
         inputDelegate?.refreshFiltersView(with: filter)
     }
 }
+
+// MARK: - MainOutputDelegate
 
 extension MainPresenter: MainOutputDelegate {
     func refreshCharactersList() {
@@ -70,6 +78,8 @@ extension MainPresenter: MainOutputDelegate {
         return storage.isLastPage()
     }
 }
+
+// MARK: - NetworkManagerDelegate
 
 extension MainPresenter: NetworkManagerDelegate {
     func refreshViews() {

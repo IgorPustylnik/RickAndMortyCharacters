@@ -7,17 +7,13 @@
 
 import Foundation
 
-typealias FilterGender = [Gender: Bool]
-
-struct Filter {
-    var name: String?
-    var status: Status?
-    var gender: Gender?
-}
+// MARK: - FilterObserver protocol
 
 protocol FilterObserver: AnyObject {
     func filterDidUpdate(_ filter: Filter)
 }
+
+// MARK: - FilterModel
 
 class FilterModel {
     static var shared = FilterModel()
@@ -29,7 +25,11 @@ class FilterModel {
             notifyObservers()
         }
     }
+}
 
+// MARK: - Observer
+
+extension FilterModel {
     func addObserver(_ observer: FilterObserver) {
         observers.append(observer)
     }

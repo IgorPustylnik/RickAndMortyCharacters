@@ -8,12 +8,24 @@
 import UIKit
 
 extension UIFont {
+    // MARK: - Fonts names
+
+    //
+
+    // MARK: - IBMPlexSans
+
     private enum IBMPlexSansTypes {
         static let regular = "IBMPlexSans-Regular"
         static let medium = "IBMPlexSans-Medium"
         static let semiBold = "IBMPlexSans-SemiBold"
         static let bold = "IBMPlexSans-Bold"
     }
+
+    // MARK: - UIFont instances
+
+    //
+
+    // MARK: - IBMPlexSans
 
     enum IBMPlexSans {
         static func regular(size: CGFloat) -> UIFont {

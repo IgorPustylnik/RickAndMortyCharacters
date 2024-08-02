@@ -12,6 +12,10 @@ class CharactersCollectionViewCell: UICollectionViewCell {
 
     // MARK: - UI Elements
 
+    //
+
+    // MARK: - Main HStack
+
     private lazy var hStackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
@@ -20,7 +24,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
 
         $0.addArrangedSubview(spinner)
         $0.addArrangedSubview(imageView)
-        $0.addArrangedSubview(labelsStackView)
+        $0.addArrangedSubview(labelsVStackView)
 
         return $0
     }(UIStackView())
@@ -57,7 +61,9 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         return $0
     }(UIActivityIndicatorView(style: .medium))
 
-    private lazy var labelsStackView: UIStackView = {
+    // MARK: - Labels VStack
+
+    private lazy var labelsVStackView: UIStackView = {
         $0.axis = .vertical
         $0.spacing = 6
         $0.addArrangedSubview(nameLabel)
@@ -106,6 +112,8 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         setupLayout()
     }
 
+    // MARK: - Layout setup
+
     private func setupLayout() {
         backgroundColor = UIColor.Colors.secondaryBackground
         layer.cornerRadius = 24
@@ -119,6 +127,8 @@ class CharactersCollectionViewCell: UICollectionViewCell {
             hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 18)
         ])
     }
+
+    // MARK: - Prepare for reuse
 
     override func prepareForReuse() {
         super.prepareForReuse()

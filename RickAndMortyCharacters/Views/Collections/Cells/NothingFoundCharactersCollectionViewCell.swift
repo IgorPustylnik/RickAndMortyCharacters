@@ -27,22 +27,25 @@ class NothingFoundCharactersCollectionViewCell: UICollectionViewCell {
         return $0
     }(UIImageView())
 
+    // Gray rectangular background
     private lazy var hView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .Colors.secondaryBackground
         $0.layer.cornerRadius = 32
 
-        $0.addSubview(vStackView)
+        $0.addSubview(labelsVStackView)
 
         NSLayoutConstraint.activate([
-            vStackView.centerYAnchor.constraint(equalTo: $0.centerYAnchor),
-            vStackView.trailingAnchor.constraint(equalTo: $0.trailingAnchor, constant: -46)
+            labelsVStackView.centerYAnchor.constraint(equalTo: $0.centerYAnchor),
+            labelsVStackView.trailingAnchor.constraint(equalTo: $0.trailingAnchor, constant: -46)
         ])
 
         return $0
     }(UIView())
 
-    private lazy var vStackView: UIStackView = {
+    // MARK: - Labels VStack
+
+    private lazy var labelsVStackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
 
         $0.axis = .vertical
@@ -79,6 +82,8 @@ class NothingFoundCharactersCollectionViewCell: UICollectionViewCell {
     public func configure() {
         setupLayout()
     }
+
+    // MARK: - Layout setup
 
     private func setupLayout() {
         addSubview(hView)

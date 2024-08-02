@@ -12,7 +12,8 @@ class InfoView: UIView {
 
     // MARK: - UI Elements
 
-    // Main stack
+    // MARK: - Main stack
+
     private lazy var mainVStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -25,7 +26,8 @@ class InfoView: UIView {
         return $0
     }(UIStackView())
 
-    // Top stack
+    // MARK: - Top stack
+
     private lazy var topVStack: UIStackView = {
         $0.axis = .vertical
         $0.spacing = 12
@@ -75,7 +77,7 @@ class InfoView: UIView {
         return $0
     }(UILabel())
 
-    // Bottom stack
+    // MARK: - Bottom stack
     private lazy var bottomVStack: UIStackView = {
         $0.axis = .vertical
         $0.spacing = 12

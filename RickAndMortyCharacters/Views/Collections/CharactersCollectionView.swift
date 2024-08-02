@@ -7,15 +7,19 @@
 
 import UIKit
 
+// MARK: - CharactersCollectionViewDelegate protocol
+
 protocol CharactersCollectionViewDelegate: AnyObject {
     func showCharacter(_ character: CharacterData)
     func isLastPage() -> Bool?
     func loadMoreData(completion: @escaping () -> Void)
 }
 
+// MARK: - CharactersCollectionView
+
 class CharactersCollectionView: UICollectionView {
     private var characters: [CharacterData]?
-    private weak var ccvDelegate: CharactersCollectionViewDelegate?
+    private weak var charactersCollectionViewDelegate: CharactersCollectionViewDelegate?
 
     private var isLoading: Bool = false {
         didSet {
@@ -25,7 +29,9 @@ class CharactersCollectionView: UICollectionView {
 
     private var activityIndiator = UIActivityIndicatorView(style: .medium)
 
-    init(ccvDelegate: CharactersCollectionViewDelegate) {
+    // MARK: - Lifecycle
+
+    init(charactersCollectionViewDelegate: CharactersCollectionViewDelegate) {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         super.init(frame: .zero, collectionViewLayout: layout)
@@ -34,7 +40,7 @@ class CharactersCollectionView: UICollectionView {
         showsVerticalScrollIndicator = false
         alwaysBounceVertical = true
 
-        self.ccvDelegate = ccvDelegate
+        self.charactersCollectionViewDelegate = charactersCollectionViewDelegate
         delegate = self
         dataSource = self
         register(CharactersCollectionViewCell.self, forCellWithReuseIdentifier: CharactersCollectionViewCell.identifier)
@@ -52,14 +58,18 @@ class CharactersCollectionView: UICollectionView {
         self.characters = characters
         reloadData()
     }
+}
 
+// MARK: - Additional functions
+
+extension CharactersCollectionView {
     private func loadMoreData() {
-        guard let ccvDelegate = ccvDelegate else { return }
-        guard let isLastPage = ccvDelegate.isLastPage() else { return }
+        guard let charactersCollectionViewDelegate = charactersCollectionViewDelegate else { return }
+        guard let isLastPage = charactersCollectionViewDelegate.isLastPage() else { return }
         guard !isLastPage else { return }
         isLoading = true
 
-        ccvDelegate.loadMoreData {
+        charactersCollectionViewDelegate.loadMoreData {
             self.isLoading = false
         }
     }
@@ -69,6 +79,8 @@ class CharactersCollectionView: UICollectionView {
         scrollToItem(at: topIndexPath, at: .top, animated: true)
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension CharactersCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -111,15 +123,19 @@ extension CharactersCollectionView: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension CharactersCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         deselectItem(at: indexPath, animated: true)
         guard let characters else { return }
         guard !characters.isEmpty else { return }
         let character = characters[indexPath.row]
-        ccvDelegate?.showCharacter(character)
+        charactersCollectionViewDelegate?.showCharacter(character)
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension CharactersCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,

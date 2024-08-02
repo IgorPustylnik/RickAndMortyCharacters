@@ -7,10 +7,14 @@
 
 import UIKit
 
+// MARK: - MainInputDelegate protocol
+
 protocol MainInputDelegate: AnyObject {
     func refreshCharactersView(_ characters: [CharacterData])
     func refreshFiltersView(with filter: Filter)
 }
+
+// MARK: - MainOutputDelegate protocol
 
 protocol MainOutputDelegate: AnyObject {
     func resetFilterState()
@@ -20,13 +24,17 @@ protocol MainOutputDelegate: AnyObject {
     func isLastPage() -> Bool?
 }
 
+// MARK: - MainVC
+
 class MainVC: UIViewController {
     private let presenter = MainPresenter()
     private weak var outputDelegate: MainOutputDelegate?
 
     private lazy var filterSearchView = FilterSearchView(delegate: self)
-    private lazy var charactersCollectionView = CharactersCollectionView(ccvDelegate: self)
+    private lazy var charactersCollectionView = CharactersCollectionView(charactersCollectionViewDelegate: self)
     private var tapBottomSheetHider: UITapGestureRecognizer?
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +45,8 @@ class MainVC: UIViewController {
 
         setupLayout()
     }
+
+    // MARK: - Layout setup
 
     private func setupLayout() {
         view.backgroundColor = .Colors.background
@@ -59,7 +69,22 @@ class MainVC: UIViewController {
             charactersCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
+}
 
+// MARK: - Gesture recognizer
+
+extension MainVC {
+    private func addDismissAllOverlayingComponentsGestureRecognizer() {
+        tapBottomSheetHider = UITapGestureRecognizer(target: self, action: #selector(dismissAllOverlays))
+        guard let tapBottomSheetHider else { return }
+        view.addGestureRecognizer(tapBottomSheetHider)
+        tapBottomSheetHider.cancelsTouchesInView = false
+    }
+}
+
+// MARK: - Selectors
+
+extension MainVC {
     @objc
     private func showFiltersSheet() {
         let viewControllerToPresent = FilterBottomVC()
@@ -82,13 +107,6 @@ class MainVC: UIViewController {
         present(viewControllerToPresent, animated: true, completion: nil)
     }
 
-    private func addDismissAllOverlayingComponentsGestureRecognizer() {
-        tapBottomSheetHider = UITapGestureRecognizer(target: self, action: #selector(dismissAllOverlays))
-        guard let tapBottomSheetHider else { return }
-        view.addGestureRecognizer(tapBottomSheetHider)
-        tapBottomSheetHider.cancelsTouchesInView = false
-    }
-
     @objc
     private func dismissAllOverlays() {
         tapBottomSheetHider?.cancelsTouchesInView = false
@@ -96,6 +114,8 @@ class MainVC: UIViewController {
         dismiss(animated: true)
     }
 }
+
+// MARK: - MainInputDelegate
 
 extension MainVC: MainInputDelegate {
     func refreshCharactersView(_ characters: [CharacterData]) {
@@ -106,6 +126,8 @@ extension MainVC: MainInputDelegate {
         filterSearchView.setFilter(filter: filter)
     }
 }
+
+// MARK: - FilterSearchViewDelegate
 
 extension MainVC: FilterSearchViewDelegate {
     func pressedFiltersButton() {
@@ -121,6 +143,8 @@ extension MainVC: FilterSearchViewDelegate {
         outputDelegate?.setSearchQuery(text)
     }
 }
+
+// MARK: - CharactersCollectionViewDelegate
 
 extension MainVC: CharactersCollectionViewDelegate {
     func showCharacter(_ character: CharacterData) {

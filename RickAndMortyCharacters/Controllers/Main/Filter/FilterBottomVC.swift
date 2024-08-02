@@ -7,20 +7,28 @@
 
 import UIKit
 
+// MARK: - FilterOutputDelegate protocol
+
 protocol FilterOutputDelegate: AnyObject {
     func applyFilter(_ filter: Filter)
     func refreshFilterOnView()
 }
 
+// MARK: - FilterInputDelegate protocol
+
 protocol FilterInputDelegate: AnyObject {
     func resfreshFilterOnView(filter: Filter)
 }
+
+// MARK: - FilterBottomVC
 
 class FilterBottomVC: UIViewController {
     private let presenter = FilterPresenter()
     private weak var outputDelegate: FilterOutputDelegate?
 
     private lazy var bottomView = FilterBottomView()
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +38,8 @@ class FilterBottomVC: UIViewController {
         outputDelegate?.refreshFilterOnView()
         setupLayout()
     }
+
+    // MARK: - Layout setup
 
     private func setupLayout() {
         view.backgroundColor = .Colors.secondaryBackground
@@ -44,11 +54,15 @@ class FilterBottomVC: UIViewController {
     }
 }
 
+// MARK: - FilterInputDelegate
+
 extension FilterBottomVC: FilterInputDelegate {
     func resfreshFilterOnView(filter: Filter) {
         bottomView.setFilter(filter)
     }
 }
+
+// MARK: - FilterBottomViewDelegate
 
 extension FilterBottomVC: FilterBottomViewDelegate {
     func pressedApplyFilter(with filter: Filter) {

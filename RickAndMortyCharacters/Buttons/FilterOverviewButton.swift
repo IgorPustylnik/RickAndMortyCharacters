@@ -11,6 +11,21 @@ class FilterOverviewButton: UIButton {
     private var title: String
     private var clickable: Bool
 
+    // MARK: - Lifecycle
+
+    init(title: String, clickable: Bool) {
+        self.title = title
+        self.clickable = clickable
+        super.init(frame: .zero)
+        updateConfig()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Configuration
+
     private func updateConfig() {
         var config = UIButton.Configuration.bordered()
         config.buttonSize = .small
@@ -26,16 +41,5 @@ class FilterOverviewButton: UIButton {
                                                   ]))
 
         configuration = config
-    }
-
-    init(title: String, clickable: Bool) {
-        self.title = title
-        self.clickable = clickable
-        super.init(frame: .zero)
-        updateConfig()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

@@ -7,16 +7,22 @@
 
 import UIKit
 
+// MARK: - FilterSearchViewDelegate protocol
+
 protocol FilterSearchViewDelegate: AnyObject {
     func pressedFiltersButton()
     func pressedResetButton()
     func searchTextFieldDidChange(text: String)
 }
 
+// MARK: - FilterSearchView
+
 class FilterSearchView: UIView {
     private var filter: Filter?
 
     private weak var delegate: FilterSearchViewDelegate?
+
+    // MARK: - UI Elements
 
     private lazy var mainVStackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +68,8 @@ class FilterSearchView: UIView {
 
     private lazy var resetButton = FilterOverviewButton(title: "Reset all filters", clickable: true)
 
+    // MARK: - Lifecycle
+
     init(delegate: FilterSearchViewDelegate) {
         self.delegate = delegate
         super.init(frame: .zero)
@@ -86,6 +94,8 @@ class FilterSearchView: UIView {
         searchTextField.addTarget(self, action: #selector(searchTextFieldDidChange), for: .editingChanged)
     }
 
+    // MARK: - Layout setup
+
     private func setupLayout() {
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -93,12 +103,15 @@ class FilterSearchView: UIView {
 
         NSLayoutConstraint.activate([
             mainVStackView.topAnchor.constraint(equalTo: topAnchor),
-//            mainVStack.bottomAnchor.constraint(equalTo: bottomAnchor),
             mainVStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mainVStackView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
+}
 
+// MARK: - Buttons logic
+
+extension FilterSearchView {
     private func getButtonList(filter: Filter) -> [FilterOverviewButton] {
         var list: [FilterOverviewButton] = []
 
@@ -171,19 +184,25 @@ class FilterSearchView: UIView {
 
         return scrollView
     }
+}
 
+// MARK: - Selectors
+
+extension FilterSearchView {
     @objc
     private func pressedFiltersButton() {
         delegate?.pressedFiltersButton()
     }
 
-    @objc private func pressedResetButton() {
+    @objc
+    private func pressedResetButton() {
         delegate?.pressedResetButton()
         searchTextField.text = ""
         setFilter(filter: Filter())
     }
 
-    @objc private func searchTextFieldDidChange() {
+    @objc
+    private func searchTextFieldDidChange() {
         delegate?.searchTextFieldDidChange(text: searchTextField.text ?? "")
     }
 }

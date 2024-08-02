@@ -10,6 +10,8 @@ import UIKit
 class NetworkErrorVC: UIViewController {
     private var networkMonitor = NetworkMonitor.shared
 
+    // MARK: - UI Elements
+
     private lazy var imageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.image = UIImage(named: "images/networkError")
@@ -43,10 +45,14 @@ class NetworkErrorVC: UIViewController {
 
     private lazy var retryButton = CustomAquaButton(title: "Retry")
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
     }
+
+    // MARK: - Layout setup
 
     private func setupLayout() {
         view.backgroundColor = .Colors.background
@@ -76,7 +82,11 @@ class NetworkErrorVC: UIViewController {
 
         ])
     }
+}
 
+// MARK: - Selectors
+
+extension NetworkErrorVC {
     @objc
     private func retryButtonPressed() {
         // here is supposed to be manual retry logic but at this point the main screen presents itself automatically

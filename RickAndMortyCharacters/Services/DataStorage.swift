@@ -8,57 +8,18 @@
 import Foundation
 import UIKit
 
+// MARK: - DataStorageObserver
+
 protocol DataStorageObserver: AnyObject {
     func storageDidUpdate(_ charactersList: [CharacterData])
 }
+
+// MARK: - DataStorage
 
 class DataStorage {
     static let shared = DataStorage()
 
     private var observers = [DataStorageObserver]()
-
-    func addObserver(_ observer: DataStorageObserver) {
-        observers.append(observer)
-    }
-
-    private func notifyObservers() {
-        observers.forEach {
-            $0.storageDidUpdate(charactersList)
-        }
-    }
-
-    private var currentPage: Int = 0
-    private var totalPages: Int = -1
-
-    public func incrementCurrentPage() -> Int {
-        if !isLastPage() {
-            currentPage += 1
-            print("Current page: \(currentPage) out of \(totalPages)")
-            return currentPage
-        } else {
-            return currentPage
-        }
-    }
-
-    public func isLastPage() -> Bool {
-        return currentPage == totalPages
-    }
-
-    public func getCurrentPage() -> Int {
-        return currentPage
-    }
-
-    public func resetCurrentPage() {
-        currentPage = 0
-    }
-
-    public func getTotalPages() -> Int {
-        return totalPages
-    }
-
-    public func setTotalPages(_ pages: Int) {
-        totalPages = pages
-    }
 
     var charactersList: [CharacterData] = [] {
         didSet {
@@ -66,6 +27,13 @@ class DataStorage {
         }
     }
 
+    private var currentPage: Int = 0
+    private var totalPages: Int = -1
+}
+
+// MARK: - Mock data source
+
+extension DataStorage {
     private static var mockList: [CharacterData] = [
         CharacterData(id: 0,
                       image: UIImage(named: "images/splashScreenBackground"),
@@ -150,4 +118,52 @@ class DataStorage {
                       episodes: [],
                       location: "Earth")
     ]
+}
+
+// MARK: - Pages logic
+
+extension DataStorage {
+    public func incrementCurrentPage() -> Int {
+        if !isLastPage() {
+            currentPage += 1
+            print("Current page: \(currentPage) out of \(totalPages)")
+            return currentPage
+        } else {
+            return currentPage
+        }
+    }
+
+    public func isLastPage() -> Bool {
+        return currentPage == totalPages
+    }
+
+    public func getCurrentPage() -> Int {
+        return currentPage
+    }
+
+    public func resetCurrentPage() {
+        currentPage = 0
+    }
+
+    public func getTotalPages() -> Int {
+        return totalPages
+    }
+
+    public func setTotalPages(_ pages: Int) {
+        totalPages = pages
+    }
+}
+
+// MARK: Observers
+
+extension DataStorage {
+    func addObserver(_ observer: DataStorageObserver) {
+        observers.append(observer)
+    }
+
+    private func notifyObservers() {
+        observers.forEach {
+            $0.storageDidUpdate(charactersList)
+        }
+    }
 }

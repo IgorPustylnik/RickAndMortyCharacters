@@ -48,19 +48,19 @@ struct CharacterRaw: Codable {
 
         for episodeUrl in episode {
             DispatchQueue.main.async {
-                NetworkManager.shared.getEpisodesName(url: URL(string: episodeUrl)) { result in
+                NetworkManager.shared.fetchEpisodesName(url: URL(string: episodeUrl)) { result in
                     switch result {
                     case let .success(name):
                         episodesNames.append(name)
 
                     case let .failure(error):
-                        print("Error finding episode's name")
+                        print("Error finding episode's name: \(error)")
                     }
                 }
             }
         }
 
-        var character = CharacterData(id: id,
+        let character = CharacterData(id: id,
                                       image: nil,
                                       name: name,
                                       status: status,

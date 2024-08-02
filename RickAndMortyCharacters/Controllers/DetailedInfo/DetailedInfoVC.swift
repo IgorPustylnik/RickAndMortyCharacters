@@ -36,7 +36,8 @@ class DetailedInfoVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // make it so that the swipe back gesture works (with the extension's realization of the delegate)
+
+        // makes it so that the swipe back gesture works (with the extension's realization of the delegate)
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         setupCustomBackButton()
         setupLayout()

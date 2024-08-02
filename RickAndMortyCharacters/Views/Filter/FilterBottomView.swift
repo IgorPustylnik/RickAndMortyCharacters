@@ -7,14 +7,22 @@
 
 import UIKit
 
+// MARK: - FilterBottomViewDelegate
+
 protocol FilterBottomViewDelegate: AnyObject {
     func pressedApplyFilter(with filter: Filter)
     func pressedClose()
 }
 
+// MARK: - FilterBottomView
+
 class FilterBottomView: UIView {
     private var filter: Filter?
     private weak var delegate: FilterBottomViewDelegate?
+
+    // MARK: - UI Elements
+
+    //
 
     // MARK: - Main stack view
 
@@ -314,7 +322,7 @@ extension FilterBottomView {
         // Save buttons state
         filter.status = nil
         for (statusType, button) in statusButtons {
-            if let active = button?.getButtonState() {
+            if let active = button?.getActive() {
                 if active {
                     filter.status = statusType
                     break
@@ -324,7 +332,7 @@ extension FilterBottomView {
 
         filter.gender = nil
         for (genderType, button) in genderButtons {
-            if let active = button?.getButtonState() {
+            if let active = button?.getActive() {
                 if active {
                     filter.gender = genderType
                     break
