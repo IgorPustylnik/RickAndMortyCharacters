@@ -69,18 +69,18 @@ class NetworkManager {
     }
 
     private func fetchCharactersRawList(filter: Filter, page: Int,
-                                        completion: @escaping (Result<CharactersList, Error>) -> Void) {
+                                        completion: @escaping (Result<CharactersList, Swift.Error>) -> Void) {
         guard let url = APIEndpoint.charactersFilter(filter: filter, page: page).url else { return }
 
         print("Fetching characters started: \(page)")
 
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error {
-                completion(.failure(.generic))
+                completion(.failure(error))
                 return
             }
             guard let data else {
-                completion(.failure(.dataNotFound))
+                completion(.failure(Error.dataNotFound))
                 return
             }
 
@@ -89,7 +89,7 @@ class NetworkManager {
                 completion(.success(rawCharactersList))
                 return
             } catch {
-                completion(.failure(.decoding))
+                completion(.failure(Error.decoding))
                 return
             }
         }
@@ -101,7 +101,7 @@ class NetworkManager {
         let nextPage = storage.incrementCurrentPage()
         fetchCharactersRawList(filter: filter, page: nextPage) { result in
             switch result {
-            case let .failure(.decoding):
+            case .failure(Error.decoding):
                 self.storage.resetCurrentPage()
                 self.storage.setTotalPages(-1)
                 self.storage.charactersList.removeAll()
@@ -178,15 +178,15 @@ class NetworkManager {
         }
     }
 
-    public func getEpisodesName(url: URL?, completion: @escaping (Result<String, Error>) -> Void) {
-        guard let url else { completion(.failure(.invalidUrl)); return }
+    public func getEpisodesName(url: URL?, completion: @escaping (Result<String, Swift.Error>) -> Void) {
+        guard let url else { completion(.failure(Error.invalidUrl)); return }
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error {
-                completion(.failure(.generic))
+                completion(.failure(error))
                 return
             }
             guard let data else {
-                completion(.failure(.dataNotFound))
+                completion(.failure(Error.dataNotFound))
                 return
             }
 
@@ -195,22 +195,22 @@ class NetworkManager {
                 completion(.success(rawEpisode.name))
                 return
             } catch {
-                completion(.failure(.decoding))
+                completion(.failure(Error.decoding))
                 return
             }
         }
         task.resume()
     }
 
-    func getData(from url: URL?, completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let url else { completion(.failure(.invalidUrl)); return }
+    func getData(from url: URL?, completion: @escaping (Result<Data, Swift.Error>) -> Void) {
+        guard let url else { completion(.failure(Error.invalidUrl)); return }
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error {
-                completion(.failure(.generic))
+                completion(.failure(error))
                 return
             }
             guard let data else {
-                completion(.failure(.dataNotFound))
+                completion(.failure(Error.dataNotFound))
                 return
             }
 

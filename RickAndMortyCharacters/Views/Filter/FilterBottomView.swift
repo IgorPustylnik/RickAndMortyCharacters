@@ -13,7 +13,6 @@ protocol FilterBottomViewDelegate: AnyObject {
 }
 
 class FilterBottomView: UIView {
-    
     private var filter: Filter?
     private weak var delegate: FilterBottomViewDelegate?
 
@@ -50,7 +49,7 @@ class FilterBottomView: UIView {
             navTitle.centerYAnchor.constraint(equalTo: $0.centerYAnchor),
 
             resetButton.centerYAnchor.constraint(equalTo: $0.centerYAnchor),
-            resetButton.trailingAnchor.constraint(equalTo: $0.trailingAnchor),
+            resetButton.trailingAnchor.constraint(equalTo: $0.trailingAnchor)
         ])
         return $0
     }(UIView())
@@ -78,7 +77,10 @@ class FilterBottomView: UIView {
         var configuration = UIButton.Configuration.borderless()
         configuration.baseForegroundColor = .Colors.aqua
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        configuration.attributedTitle = AttributedString("Reset", attributes: AttributeContainer([.font: UIFont.IBMPlexSans.regular(size: 14)]))
+        configuration.attributedTitle = AttributedString("Reset",
+                                                         attributes: AttributeContainer([
+                                                             .font: UIFont.IBMPlexSans.regular(size: 14)
+                                                         ]))
         $0.configuration = configuration
         return $0
     }(UIButton())
@@ -118,7 +120,7 @@ class FilterBottomView: UIView {
     private lazy var statusButtons: [Status: FilterToggleButton?] = [
         .dead: deadStatusButton,
         .alive: aliveStatusButton,
-        .unknown: unknownStatusButton,
+        .unknown: unknownStatusButton
     ]
 
     private var statusButtonsScrollView: UIScrollView?
@@ -126,7 +128,7 @@ class FilterBottomView: UIView {
     private var aliveStatusButton: FilterToggleButton?
     private var deadStatusButton: FilterToggleButton?
     private var unknownStatusButton: FilterToggleButton?
-    
+
     private var activeStatusButton: FilterToggleButton?
 
     // MARK: - Gender filter
@@ -152,16 +154,16 @@ class FilterBottomView: UIView {
         .male: maleGenderButton,
         .female: femaleGenderButton,
         .genderless: genderlessButton,
-        .unknown: unknownGenderButton,
+        .unknown: unknownGenderButton
     ]
 
     private var genderButtonsScrollView: UIScrollView?
-    
+
     private var maleGenderButton: FilterToggleButton?
     private var femaleGenderButton: FilterToggleButton?
     private var genderlessButton: FilterToggleButton?
     private var unknownGenderButton: FilterToggleButton?
-    
+
     private var activeGenderButton: FilterToggleButton?
 
     // MARK: - Apply button
@@ -176,7 +178,7 @@ class FilterBottomView: UIView {
 
     func setFilter(_ filter: Filter?) {
         self.filter = filter
-        
+
         setupFiltersButtons()
         setupButtonsTargets()
         setupLayout()
@@ -191,38 +193,74 @@ class FilterBottomView: UIView {
 
         NSLayoutConstraint.activate([
             mainVStack.topAnchor.constraint(equalTo: topAnchor, constant: 24),
-//            mainVStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
             mainVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            mainVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            mainVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
         ])
     }
-    
+}
+
+// MARK: - Buttons logic
+
+extension FilterBottomView {
     // MARK: - Buttons setup
-    
+
     private func setupFiltersButtons() {
         guard let filter else { return }
 
-        aliveStatusButton = FilterToggleButton(title: "Alive", isOn: filter.status == .alive, toggleAction: { self.updateActiveStatusButton(button: self.aliveStatusButton)})
-        
-        deadStatusButton = FilterToggleButton(title: "Dead", isOn: filter.status == .dead, toggleAction: { self.updateActiveStatusButton(button: self.deadStatusButton)})
+        aliveStatusButton = FilterToggleButton(title: "Alive",
+                                               isOn: filter.status == .alive,
+                                               toggleAction: {
+                                                   self.updateActiveStatusButton(button: self.aliveStatusButton)
+                                               })
 
-        unknownStatusButton = FilterToggleButton(title: "Unknown", isOn: filter.status == .unknown, toggleAction: { self.updateActiveStatusButton(button: self.unknownStatusButton)})
+        deadStatusButton = FilterToggleButton(title: "Dead",
+                                              isOn: filter.status == .dead,
+                                              toggleAction: {
+                                                  self.updateActiveStatusButton(button: self.deadStatusButton)
+                                              })
 
-        maleGenderButton = FilterToggleButton(title: "Male", isOn: filter.gender == .male, toggleAction: { self.updateActiveGenderButton(button: self.maleGenderButton)})
-        
-        femaleGenderButton = FilterToggleButton(title: "Female", isOn: filter.gender == .female, toggleAction: { self.updateActiveGenderButton(button: self.femaleGenderButton)})
-        
-        genderlessButton = FilterToggleButton(title: "Genderless", isOn: filter.gender == .genderless, toggleAction: { self.updateActiveGenderButton(button: self.genderlessButton)})
-        
-        unknownGenderButton = FilterToggleButton(title: "Unknown", isOn: filter.gender == .unknown, toggleAction: { self.updateActiveGenderButton(button: self.unknownGenderButton)})
-        
+        unknownStatusButton = FilterToggleButton(title: "Unknown",
+                                                 isOn: filter.status == .unknown,
+                                                 toggleAction: {
+                                                     self.updateActiveStatusButton(button: self.unknownStatusButton)
+                                                 })
+
+        maleGenderButton = FilterToggleButton(title: "Male",
+                                              isOn: filter.gender == .male,
+                                              toggleAction: {
+                                                  self.updateActiveGenderButton(button: self.maleGenderButton)
+                                              })
+
+        femaleGenderButton = FilterToggleButton(title: "Female",
+                                                isOn: filter.gender == .female,
+                                                toggleAction: {
+                                                    self.updateActiveGenderButton(button: self.femaleGenderButton)
+                                                })
+
+        genderlessButton = FilterToggleButton(title: "Genderless",
+                                              isOn: filter.gender == .genderless,
+                                              toggleAction: {
+                                                  self.updateActiveGenderButton(button: self.genderlessButton)
+                                              })
+
+        unknownGenderButton = FilterToggleButton(title: "Unknown",
+                                                 isOn: filter.gender == .unknown,
+                                                 toggleAction: {
+                                                     self.updateActiveGenderButton(button: self.unknownGenderButton)
+                                                 })
+
         updateButtonStates()
 
-        statusButtonsScrollView = createHorizontalScrollViewForButtons(buttons: Status.allCases.compactMap { statusButtons[$0] } .compactMap { $0 })
-        genderButtonsScrollView = createHorizontalScrollViewForButtons(buttons: Gender.allCases.compactMap { genderButtons[$0] } .compactMap { $0 })
+        statusButtonsScrollView = createHorizontalScrollViewForButtons(
+            buttons: Status.allCases.compactMap {
+                statusButtons[$0]
+            }.compactMap { $0 }
+        )
+        genderButtonsScrollView = createHorizontalScrollViewForButtons(
+            buttons: Gender.allCases.compactMap { genderButtons[$0] }.compactMap { $0 }
+        )
     }
 
-    
     private func updateActiveStatusButton(button: FilterToggleButton?) {
         activeStatusButton?.setActive(false)
         if button == activeStatusButton {
@@ -241,13 +279,12 @@ class FilterBottomView: UIView {
         }
     }
 
-    
     private func setupButtonsTargets() {
         closeButton.addTarget(self, action: #selector(pressedCloseButton), for: .touchUpInside)
         resetButton.addTarget(self, action: #selector(pressedResetButton), for: .touchUpInside)
         applyButton.addTarget(self, action: #selector(pressedApplyButton), for: .touchUpInside)
     }
-    
+
     private func updateButtonStates() {
         guard let filter else { return }
         activeStatusButton = nil
@@ -273,7 +310,7 @@ class FilterBottomView: UIView {
     @objc
     private func pressedApplyButton() {
         guard var filter = filter else { return }
-        
+
         // Save buttons state
         filter.status = nil
         for (statusType, button) in statusButtons {
@@ -284,6 +321,7 @@ class FilterBottomView: UIView {
                 }
             }
         }
+
         filter.gender = nil
         for (genderType, button) in genderButtons {
             if let active = button?.getButtonState() {
@@ -293,7 +331,6 @@ class FilterBottomView: UIView {
                 }
             }
         }
-
         delegate?.pressedApplyFilter(with: filter)
     }
 
@@ -350,13 +387,10 @@ extension FilterBottomView {
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
             stackView.heightAnchor.constraint(equalToConstant: 36),
-
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
 
-        // Bind scrollView's width
         let wConst = contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         wConst.isActive = true
         wConst.priority = UILayoutPriority(50)

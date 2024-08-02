@@ -8,21 +8,20 @@
 import Foundation
 
 class MainPresenter {
-    
     private let storage = DataStorage.shared
     private let filterModel = FilterModel.shared
     private let networkManager = NetworkManager.shared
-    
+
     init() {
         networkManager.setDelegate(delegate: self)
         storage.addObserver(self)
         filterModel.addObserver(self)
     }
-    
-    weak private var inputDelegate: MainInputDelegate?
-    
+
+    private weak var inputDelegate: MainInputDelegate?
+
     func setInputDelegate(mainInputDelegate: MainInputDelegate) {
-        self.inputDelegate = mainInputDelegate
+        inputDelegate = mainInputDelegate
     }
 }
 
@@ -44,33 +43,32 @@ extension MainPresenter: MainOutputDelegate {
     func refreshCharactersList() {
         inputDelegate?.refreshCharactersView(storage.charactersList)
     }
-    
+
     func resetFilterState() {
         filterModel.filter = Filter()
         storage.resetCurrentPage()
         networkManager.fetchCharacters(filter: filterModel.filter) {}
     }
-    
+
     func getFilterState() -> Filter {
         filterModel.filter
     }
-    
+
     func setSearchQuery(_ query: String) {
         filterModel.filter.name = query
         storage.resetCurrentPage()
         networkManager.fetchCharacters(filter: filterModel.filter) {}
     }
-    
-    func loadCharacters(completion: @escaping () -> Void) { 
+
+    func loadCharacters(completion: @escaping () -> Void) {
         networkManager.fetchCharacters(filter: filterModel.filter) {
             completion()
         }
     }
-    
+
     func isLastPage() -> Bool? {
         return storage.isLastPage()
     }
-    
 }
 
 extension MainPresenter: NetworkManagerDelegate {

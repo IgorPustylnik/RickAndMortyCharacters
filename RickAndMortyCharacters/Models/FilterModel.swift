@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 typealias FilterGender = [Gender: Bool]
 
 struct Filter {

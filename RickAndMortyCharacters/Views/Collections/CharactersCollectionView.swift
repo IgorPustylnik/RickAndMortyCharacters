@@ -22,7 +22,7 @@ class CharactersCollectionView: UICollectionView {
             reloadData()
         }
     }
-    
+
     private var activityIndiator = UIActivityIndicatorView(style: .medium)
 
     init(ccvDelegate: CharactersCollectionViewDelegate) {
@@ -38,8 +38,10 @@ class CharactersCollectionView: UICollectionView {
         delegate = self
         dataSource = self
         register(CharactersCollectionViewCell.self, forCellWithReuseIdentifier: CharactersCollectionViewCell.identifier)
-        register(RefreshCharactersCollectionViewCell.self, forCellWithReuseIdentifier: RefreshCharactersCollectionViewCell.identifier)
-        register(NothingFoundCharactersCollectionViewCell.self, forCellWithReuseIdentifier: NothingFoundCharactersCollectionViewCell.identifier)
+        register(RefreshCharactersCollectionViewCell.self,
+                 forCellWithReuseIdentifier: RefreshCharactersCollectionViewCell.identifier)
+        register(NothingFoundCharactersCollectionViewCell.self,
+                 forCellWithReuseIdentifier: NothingFoundCharactersCollectionViewCell.identifier)
     }
 
     required init?(coder: NSCoder) {
@@ -77,29 +79,30 @@ extension CharactersCollectionView: UICollectionViewDataSource {
         return characters.count + (isLoading ? 1 : 0)
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // show nothing found cell
         if let characters = characters, characters.isEmpty {
-            let cell = collectionView.dequeueReusableCell(
+            guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: NothingFoundCharactersCollectionViewCell.identifier,
                 for: indexPath
-            ) as! NothingFoundCharactersCollectionViewCell
+            ) as? NothingFoundCharactersCollectionViewCell else { return UICollectionViewCell() }
             cell.configure()
             return cell
             // show refresh cell under everything if loading
         } else if isLoading && indexPath.row == (characters?.count ?? 0) {
-            let cell = collectionView.dequeueReusableCell(
+            guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: RefreshCharactersCollectionViewCell.identifier,
                 for: indexPath
-            ) as! RefreshCharactersCollectionViewCell
+            ) as? RefreshCharactersCollectionViewCell else { return UICollectionViewCell() }
             cell.configure()
             return cell
         } else {
             // show normal cell
-            let cell = collectionView.dequeueReusableCell(
+            guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: CharactersCollectionViewCell.identifier,
                 for: indexPath
-            ) as! CharactersCollectionViewCell
+            ) as? CharactersCollectionViewCell else { return UICollectionViewCell() }
 
             guard let previewCharacter = characters?[indexPath.row] else { return cell }
             cell.configure(with: previewCharacter)
@@ -119,14 +122,18 @@ extension CharactersCollectionView: UICollectionViewDelegate {
 }
 
 extension CharactersCollectionView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let characters = characters, characters.isEmpty {
             return CGSize(width: frame.width, height: 260)
         }
         return CGSize(width: frame.width, height: 96)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         4
     }
 

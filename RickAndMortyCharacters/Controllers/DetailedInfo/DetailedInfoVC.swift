@@ -9,7 +9,7 @@ import UIKit
 
 class DetailedInfoVC: UIViewController {
     private var character: CharacterData?
-    
+
     // MARK: - UI Elements
 
     private lazy var scrollView: UIScrollView = {
@@ -33,11 +33,11 @@ class DetailedInfoVC: UIViewController {
     private lazy var infoView = InfoView()
 
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // make it so that the swipe back gesture works (with the extension's realization of the delegate)
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         setupCustomBackButton()
         setupLayout()
     }
@@ -47,7 +47,7 @@ class DetailedInfoVC: UIViewController {
         infoView.configure(with: character)
         infoView.layoutSubviews()
     }
-    
+
     // MARK: - Layout setup
 
     private func setupLayout() {
@@ -71,7 +71,7 @@ class DetailedInfoVC: UIViewController {
             infoView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             infoView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
 
-            infoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            infoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
 
         // Bind scrollView's height
@@ -79,6 +79,4 @@ class DetailedInfoVC: UIViewController {
         hConst.isActive = true
         hConst.priority = UILayoutPriority(50)
     }
-
 }
-

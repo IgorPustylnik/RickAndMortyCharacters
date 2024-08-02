@@ -11,7 +11,7 @@ class InfoView: UIView {
     private var character: CharacterData?
 
     // MARK: - UI Elements
-    
+
     // Main stack
     private lazy var mainVStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +21,7 @@ class InfoView: UIView {
 
         $0.addArrangedSubview(topVStack)
         $0.addArrangedSubview(bottomVStack)
-        
+
         return $0
     }(UIStackView())
 
@@ -33,12 +33,12 @@ class InfoView: UIView {
 
         $0.addArrangedSubview(imageView)
         $0.addArrangedSubview(statusView)
-        
+
         NSLayoutConstraint.activate([
             statusView.heightAnchor.constraint(equalToConstant: 41.92),
             statusView.leadingAnchor.constraint(equalTo: $0.leadingAnchor),
             statusView.trailingAnchor.constraint(equalTo: $0.trailingAnchor),
-            
+
             statusLabel.centerXAnchor.constraint(equalTo: statusView.centerXAnchor),
             statusLabel.centerYAnchor.constraint(equalTo: statusView.centerYAnchor)
         ])
@@ -49,7 +49,7 @@ class InfoView: UIView {
         $0.layer.cornerRadius = 12
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
-        
+
         $0.heightAnchor.constraint(equalToConstant: 317).isActive = true
 
         return $0
@@ -100,33 +100,33 @@ class InfoView: UIView {
         let semiBoldFont = UIFont.IBMPlexSans.semiBold(size: 16)
         string.addAttribute(.font, value: semiBoldFont, range: titleRange)
         label.attributedText = string
-        
+
         return label
     }
-    
+
     // MARK: - Lifecycle
-    
+
     init() {
         super.init(frame: .zero)
         setupLayout()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     public func configure(with character: CharacterData) {
         self.character = character
 
         setupInfo()
         setupLayout()
     }
-    
+
     // MARK: - Layout setup
 
     private func setupLayout() {
         translatesAutoresizingMaskIntoConstraints = false
-        
+
         layer.cornerRadius = 24
         backgroundColor = .Colors.secondaryBackground
 
@@ -139,7 +139,7 @@ class InfoView: UIView {
             mainVStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
     }
-    
+
     // MARK: - Character info setup
 
     private func setupInfo() {
@@ -174,9 +174,14 @@ class InfoView: UIView {
             episodes.append("None")
         }
 
-        bottomVStack.addArrangedSubview(createLabel(title: "Species", info: character.species))
-        bottomVStack.addArrangedSubview(createLabel(title: "Gender", info: character.gender == .unknown ? "Unknown" : character.gender.rawValue))
-        bottomVStack.addArrangedSubview(createLabel(title: "Episodes", info: episodes))
-        bottomVStack.addArrangedSubview(createLabel(title: "Last known location", info: character.location))
+        bottomVStack.addArrangedSubview(createLabel(title: "Species",
+                                                    info: character.species))
+        bottomVStack.addArrangedSubview(createLabel(title: "Gender",
+                                                    info: character.gender == .unknown ?
+                                                        "Unknown" : character.gender.rawValue))
+        bottomVStack.addArrangedSubview(createLabel(title: "Episodes",
+                                                    info: episodes))
+        bottomVStack.addArrangedSubview(createLabel(title: "Last known location",
+                                                    info: character.location))
     }
 }

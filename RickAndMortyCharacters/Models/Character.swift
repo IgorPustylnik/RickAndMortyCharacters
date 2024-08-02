@@ -11,14 +11,14 @@ import UIKit
 enum Status: String, CaseIterable {
     case alive = "Alive"
     case dead = "Dead"
-    case unknown = "unknown"
+    case unknown
 }
 
 enum Gender: String, CaseIterable {
     case male = "Male"
     case female = "Female"
     case genderless = "Genderless"
-    case unknown = "unknown"
+    case unknown
 }
 
 struct CharactersList: Codable {
@@ -39,29 +39,36 @@ struct CharacterRaw: Codable {
     let gender: String
     let episode: [String]
     let location: Location
-    
+
     func convertToCharacterData() -> CharacterData? {
-        guard let status: Status = Status.init(rawValue: status) else { print("error converting"); return nil }
-        guard let gender: Gender = Gender.init(rawValue: gender) else { print("error converting"); return nil }
+        guard let status: Status = Status(rawValue: status) else { print("error converting"); return nil }
+        guard let gender: Gender = Gender(rawValue: gender) else { print("error converting"); return nil }
 
         var episodesNames: [String] = []
-        
+
         for episodeUrl in episode {
             DispatchQueue.main.async {
                 NetworkManager.shared.getEpisodesName(url: URL(string: episodeUrl)) { result in
                     switch result {
-                    case .success(let name):
+                    case let .success(name):
                         episodesNames.append(name)
-                        
-                    case .failure(let error):
+
+                    case let .failure(error):
                         print("Error finding episode's name")
                     }
                 }
             }
         }
-        
-        var character = CharacterData(id: id, image: nil, name: name, status: status, species: species, gender: gender, episodes: episodesNames, location: location.name)
-        
+
+        var character = CharacterData(id: id,
+                                      image: nil,
+                                      name: name,
+                                      status: status,
+                                      species: species,
+                                      gender: gender,
+                                      episodes: episodesNames,
+                                      location: location.name)
+
         return character
     }
 }
@@ -83,8 +90,15 @@ class CharacterData {
     let gender: Gender
     var episodes: [String]
     let location: String
-    
-    init(id: Int, image: UIImage?, name: String, status: Status, species: String, gender: Gender, episodes: [String], location: String) {
+
+    init(id: Int,
+         image: UIImage?,
+         name: String,
+         status: Status,
+         species: String,
+         gender: Gender,
+         episodes: [String],
+         location: String) {
         self.id = id
         self.image = image
         self.name = name

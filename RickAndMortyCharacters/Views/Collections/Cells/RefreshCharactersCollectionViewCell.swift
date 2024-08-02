@@ -26,7 +26,6 @@ class RefreshCharactersCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupLayout() {
-
         addSubview(spinner)
 
         NSLayoutConstraint.activate([
@@ -34,10 +33,4 @@ class RefreshCharactersCollectionViewCell: UICollectionViewCell {
             spinner.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
 }
-
-

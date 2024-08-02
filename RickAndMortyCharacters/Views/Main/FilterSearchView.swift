@@ -48,7 +48,7 @@ class FilterSearchView: UIView {
             searchTextField.trailingAnchor.constraint(equalTo: showFiltersButton.leadingAnchor, constant: -16),
 
             showFiltersButton.centerYAnchor.constraint(equalTo: $0.centerYAnchor),
-            showFiltersButton.trailingAnchor.constraint(equalTo: $0.trailingAnchor),
+            showFiltersButton.trailingAnchor.constraint(equalTo: $0.trailingAnchor)
         ])
 
         return $0
@@ -95,7 +95,7 @@ class FilterSearchView: UIView {
             mainVStackView.topAnchor.constraint(equalTo: topAnchor),
 //            mainVStack.bottomAnchor.constraint(equalTo: bottomAnchor),
             mainVStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            mainVStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mainVStackView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
@@ -107,7 +107,7 @@ class FilterSearchView: UIView {
             let filterButton = FilterOverviewButton(title: title, clickable: false)
             list.append(filterButton)
         }
-            
+
         if let gender = filter.gender {
             let title = gender == .unknown ? "Unknown" : gender.rawValue
             let filterButton = FilterOverviewButton(title: title, clickable: false)
@@ -161,7 +161,7 @@ class FilterSearchView: UIView {
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
 
         // Bind scrollView's width

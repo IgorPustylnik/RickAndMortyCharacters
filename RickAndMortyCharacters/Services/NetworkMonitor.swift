@@ -41,7 +41,7 @@ final class NetworkMonitor {
             self?.isConnected = path.status != .unsatisfied
             self?.isExpensive = path.isExpensive
             self?.currentConnectionType = NWInterface.InterfaceType.allCases.filter { path.usesInterfaceType($0) }.first
-            
+
             NotificationCenter.default.post(name: .connectivityStatus, object: nil)
         }
         monitor.start(queue: queue)

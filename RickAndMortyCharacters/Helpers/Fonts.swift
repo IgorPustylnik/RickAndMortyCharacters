@@ -14,7 +14,7 @@ extension UIFont {
         static let semiBold = "IBMPlexSans-SemiBold"
         static let bold = "IBMPlexSans-Bold"
     }
-    
+
     enum IBMPlexSans {
         static func regular(size: CGFloat) -> UIFont {
             guard let font = UIFont(name: IBMPlexSansTypes.regular, size: size) else {
@@ -23,7 +23,7 @@ extension UIFont {
             }
             return font
         }
-        
+
         static func medium(size: CGFloat) -> UIFont {
             guard let font = UIFont(name: IBMPlexSansTypes.medium, size: size) else {
                 print("Font \(IBMPlexSansTypes.medium) not found")
@@ -31,7 +31,7 @@ extension UIFont {
             }
             return font
         }
-        
+
         static func semiBold(size: CGFloat) -> UIFont {
             guard let font = UIFont(name: IBMPlexSansTypes.semiBold, size: size) else {
                 print("Font \(IBMPlexSansTypes.semiBold) not found")
@@ -39,7 +39,7 @@ extension UIFont {
             }
             return font
         }
-        
+
         static func bold(size: CGFloat) -> UIFont {
             guard let font = UIFont(name: IBMPlexSansTypes.bold, size: size) else {
                 print("Font \(IBMPlexSansTypes.bold) not found")

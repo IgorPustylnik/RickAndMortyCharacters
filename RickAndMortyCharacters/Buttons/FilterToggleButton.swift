@@ -8,16 +8,15 @@
 import UIKit
 
 class FilterToggleButton: UIButton {
-    
     private var title: String
     private var toggleAction: (() -> Void)?
-    
+
     private var isOn: Bool {
         didSet {
             updateConfig()
         }
     }
-    
+
     private func updateConfig() {
         var config = UIButton.Configuration.bordered()
         config.buttonSize = .medium
@@ -28,44 +27,49 @@ class FilterToggleButton: UIButton {
         config.background.strokeWidth = isOn ? 0 : 2
         config.background.strokeColor = .Colors.border
         config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16)
-        
+
 //        if isOn {
-//            let image = UIImage(named: "icons/checkMark")?.withTintColor(.Colors.background, renderingMode: .alwaysOriginal)
+//            let image = UIImage(named: "icons/checkMark")?
+//                .withTintColor(
+//                    .Colors.background,
+//                    renderingMode: .alwaysOriginal)
 //            config.image = image
 //            config.imagePadding = 8
 //            config.imagePlacement = .trailing
 //        } else {
 //            config.image = nil
 //        }
-        config.attributedTitle = AttributedString(title, attributes: AttributeContainer([.font: UIFont.IBMPlexSans.regular(size: 12)]))
-        
-        self.configuration = config
+        config.attributedTitle = AttributedString(title,
+                                                  attributes: AttributeContainer([
+                                                      .font: UIFont.IBMPlexSans.regular(size: 12)
+                                                  ]))
+
+        configuration = config
     }
-    
+
     init(title: String, isOn: Bool, toggleAction: (() -> Void)?) {
         self.title = title
         self.isOn = isOn
         self.toggleAction = toggleAction
         super.init(frame: .zero)
-        self.addTarget(self, action: #selector(toggleButtonTapped), for: .touchUpInside)
+        addTarget(self, action: #selector(toggleButtonTapped), for: .touchUpInside)
         updateConfig()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     @objc private func toggleButtonTapped() {
         isOn.toggle()
         toggleAction?()
     }
-    
+
     func setActive(_ active: Bool) {
-        self.isOn = active
+        isOn = active
     }
-    
+
     func getButtonState() -> Bool {
         return isOn
     }
-
 }

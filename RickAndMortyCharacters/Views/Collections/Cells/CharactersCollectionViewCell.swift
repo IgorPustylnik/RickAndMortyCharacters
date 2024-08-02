@@ -17,17 +17,17 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         $0.axis = .horizontal
         $0.spacing = 16
         $0.alignment = .leading
-        
+
         $0.addArrangedSubview(spinner)
         $0.addArrangedSubview(imageView)
         $0.addArrangedSubview(labelsStackView)
 
         return $0
     }(UIStackView())
-    
+
     private var image: UIImage? {
         didSet {
-            if let image {
+            if image != nil {
                 spinner.stopAnimating()
                 spinner.isHidden = true
                 imageView.isHidden = false
@@ -42,7 +42,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
 
         NSLayoutConstraint.activate([
             $0.widthAnchor.constraint(equalToConstant: 84),
-            $0.heightAnchor.constraint(equalToConstant: 64),
+            $0.heightAnchor.constraint(equalToConstant: 64)
         ])
         return $0
     }(UIImageView())
@@ -52,7 +52,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         $0.hidesWhenStopped = true
         NSLayoutConstraint.activate([
             $0.widthAnchor.constraint(equalToConstant: 84),
-            $0.heightAnchor.constraint(equalToConstant: 64),
+            $0.heightAnchor.constraint(equalToConstant: 64)
         ])
         return $0
     }(UIActivityIndicatorView(style: .medium))
@@ -116,7 +116,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
             hStackView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             hStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 16),
             hStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 18),
+            hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 18)
         ])
     }
 
