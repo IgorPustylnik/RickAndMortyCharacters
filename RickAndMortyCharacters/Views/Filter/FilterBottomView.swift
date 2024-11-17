@@ -217,44 +217,44 @@ extension FilterBottomView {
 
         aliveStatusButton = FilterToggleButton(title: "Alive",
                                                isOn: filter.status == .alive,
-                                               toggleAction: {
-                                                   self.updateActiveStatusButton(button: self.aliveStatusButton)
+                                               toggleAction: { [weak self] in
+                                                   self?.updateActiveStatusButton(button: self?.aliveStatusButton)
                                                })
 
         deadStatusButton = FilterToggleButton(title: "Dead",
                                               isOn: filter.status == .dead,
-                                              toggleAction: {
-                                                  self.updateActiveStatusButton(button: self.deadStatusButton)
+                                              toggleAction: { [weak self] in
+                                                  self?.updateActiveStatusButton(button: self?.deadStatusButton)
                                               })
 
         unknownStatusButton = FilterToggleButton(title: "Unknown",
                                                  isOn: filter.status == .unknown,
-                                                 toggleAction: {
-                                                     self.updateActiveStatusButton(button: self.unknownStatusButton)
+                                                 toggleAction: { [weak self] in
+                                                     self?.updateActiveStatusButton(button: self?.unknownStatusButton)
                                                  })
 
         maleGenderButton = FilterToggleButton(title: "Male",
                                               isOn: filter.gender == .male,
-                                              toggleAction: {
-                                                  self.updateActiveGenderButton(button: self.maleGenderButton)
+                                              toggleAction: { [weak self] in
+                                                  self?.updateActiveGenderButton(button: self?.maleGenderButton)
                                               })
 
         femaleGenderButton = FilterToggleButton(title: "Female",
                                                 isOn: filter.gender == .female,
-                                                toggleAction: {
-                                                    self.updateActiveGenderButton(button: self.femaleGenderButton)
+                                                toggleAction: { [weak self] in
+                                                    self?.updateActiveGenderButton(button: self?.femaleGenderButton)
                                                 })
 
         genderlessButton = FilterToggleButton(title: "Genderless",
                                               isOn: filter.gender == .genderless,
-                                              toggleAction: {
-                                                  self.updateActiveGenderButton(button: self.genderlessButton)
+                                              toggleAction: { [weak self] in
+                                                  self?.updateActiveGenderButton(button: self?.genderlessButton)
                                               })
 
         unknownGenderButton = FilterToggleButton(title: "Unknown",
                                                  isOn: filter.gender == .unknown,
-                                                 toggleAction: {
-                                                     self.updateActiveGenderButton(button: self.unknownGenderButton)
+                                                 toggleAction: { [weak self] in
+                                                     self?.updateActiveGenderButton(button: self?.unknownGenderButton)
                                                  })
 
         updateButtonStates()
